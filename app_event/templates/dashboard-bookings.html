@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+{% block content %}
+	
+
+
+	<!-- Content
+	================================================== -->
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>رزرو ها</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">صفحه اصلی</a></li>
+							<li><a href="#">داشبورد</a></li>
+							<li>رزرو ها</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			
+			<!-- Listings -->
+			<div class="col-lg-12 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+					
+					<!-- Booking Requests Filters  -->
+					<div class="booking-requests-filter">
+
+						<!-- Sort by -->
+						<div class="sort-by">
+							<div class="sort-by-select">
+								<select data-placeholder="سفارش پیش فرض" class="chosen-select-no-single">
+									<option>تمام دسته ها</option>	
+									<option>خانه برگر</option>
+									<option>رستوران جعفر</option>
+									<option>هتل پیروزی</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Date Range -->
+						<div id="booking-date-range">
+						    <span></span>
+						</div>
+					</div>
+
+					<!-- Reply to review popup -->
+					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+						<div class="small-dialog-header">
+							<h3>ارسال پیام</h3>
+						</div>
+						<div class="message-reply margin-top-0">
+							<textarea cols="40" rows="3" placeholder="پیام شما به طاهر"></textarea>
+							<button class="button">ارسال</button>
+						</div>
+					</div>
+
+					<h4>درخواست رزرو</h4>
+					<ul>
+
+						<li class="pending-booking">
+							<div class="list-box-listing bookings">
+								<div class="list-box-listing-img"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=120" alt=""></div>
+								<div class="list-box-listing-content">
+									<div class="inner">
+										<h3>آفتابی و آپارتمان مدرن <span class="booking-status pending">در انتظار</span><span class="booking-status unpaid">بدون پرداخت هزینه</span></h3>
+
+										<div class="inner-booking-list">
+											<h5>تاریخ رزرو:</h5>
+											<ul class="booking-list">
+												<li class="highlighted">1398/1/25 - 1398/1/30</li>
+											</ul>
+										</div>
+													
+										<div class="inner-booking-list">
+											<h5>جزئیات رزرو:</h5>
+											<ul class="booking-list">
+												<li class="highlighted">2 بزرگسال</li>
+											</ul>
+										</div>		
+													
+										<div class="inner-booking-list">
+											<h5>قیمت:</h5>
+											<ul class="booking-list">
+												<li class="highlighted">147،000 تومان</li>
+											</ul>
+										</div>		
+
+										<div class="inner-booking-list">
+											<h5>مشتری:</h5>
+											<ul class="booking-list">
+												<li>فرشید ولی پور</li>
+												<li><a href="http://www.vasterad.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dedbdcdaf4d1ccd5d9c4d8d19ad7dbd9">[email&#160;protected]</a></li>
+												<li>123-456-789</li>
+											</ul>
+										</div>
+
+										<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> ارسال پیام</a>
+
+					
+
+									</div>
+								</div>
+							</div>
+					
+											</ul>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+
+
+			<!-- Copyrights -->
+			<div class="col-md-12">
+				<div class="copyrights">© 1398 لیستئو. تمامی حقوق محفوظ است.</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Scripts
+================================================== -->
+
+
+{% block js %}{{block.super}}
+	
+<script>
+$(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#booking-date-range span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    cb(start, end);
+    $('#booking-date-range').daterangepicker({
+    	"opens": "left",
+	    "autoUpdateInput": false,
+	    "alwaysShowCalendars": true,
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'امروز': [moment(), moment()],
+           'دیروز': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           '7 روز قبل': [moment().subtract(6, 'days'), moment()],
+           '30 روز قبل': [moment().subtract(29, 'days'), moment()],
+           'ماه اخیر': [moment().startOf('month'), moment().endOf('month')],
+           'ماه های اخیر': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+
+});
+
+// Calendar animation and visual settings
+$('#booking-date-range').on('show.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
+	$('.daterangepicker').removeClass('calendar-hidden');
+});
+$('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').removeClass('calendar-visible');
+	$('.daterangepicker').addClass('calendar-hidden');
+});
+</script>
+{% endblock js %}
+
+{% endblock content %}

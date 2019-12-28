@@ -1,0 +1,177 @@
+{%extends 'base.html'%}
+{% load static %}
+
+
+{% block content %}
+	
+
+
+	<!-- Content
+	================================================== -->
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>پروفایل من</h2>
+					<!-- Breadcrumbs -->
+					<form method="post" enctype="multipart/form-data">
+						{%csrf_token%}
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="/">صفحه اصلی</a></li>
+							<li><a href="#">داشبورد</a></li>
+							<li>پروفایل من</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<!-- Profile -->
+			<div class="col-lg-6 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+					<h4 class="gray">جزئیات مشخصات</h4>
+					<div class="dashboard-list-box-static">
+						
+						<!-- Avatar -->
+				<div class="edit-profile-photo">
+					{%if request.user.profile.avatar%}
+							<img src="{{request.user.profile.avatar.url}}" alt="">
+							<div class="change-photo-btn">
+								<div class="photoUpload">
+								    <span><i class="fa fa-upload"></i> آپلود عکس</span>
+								    <input type="file" class="upload" name="avatar" />
+								</div>
+							</div>
+						</div>
+									<button class="btn" id="delete-avatar">پاک کردن عکس</button>
+					{%else%}
+						<div class="change-photo-btn">
+								<div class="photoUpload">
+								    <span><i class="fa fa-upload"></i> آپلود عکس</span>
+								    <input type="file" class="upload red" name="avatar" />
+								</div>
+							</div>
+						</div>		
+						{%endif%}
+
+
+	
+						<!-- Details -->
+						<div class="my-profile">
+
+							<label>نام شما</label>
+							<input value="{{request.user.profile.first_name}}" type="text" name="first_name">
+							<label>نام خانوادگی</label>
+							<input value="{{request.user.profile.last_name}}" type="text" name="last_name">
+
+							<label>شماره تماس</label>
+							<input value="{{request.user.profile.tell}}" type="text" name="mobile_number">
+
+							<label>ایمیل</label>
+							<input value="{{request.user.profile.email}}" type="text" name="email">
+
+							<label>درباره من</label>
+							<textarea name="bio" id="notes" cols="30" rows="10">{{request.user.profile.bio}}</textarea>
+							<label>تخصص ورزشی شما</label>
+				  <select class="form-control" id="sel1" name="org_fav">
+							  	<option value="{{request.user.profile.orgin_fav}}">{{request.user.profile.orgin_fav}}</option>
+							
+				<option value="فوتبال">فوتبال</option>
+				<option value="تنیس">تنیس</option>
+				<option value="والیبال">والیبال</option>
+				<option value="بسکتبال">بسکتبال</option>
+				<option value="پینتبال">پینتبال</option>
+				<option value="شطرنج">شطرنج</option>
+				<option value="بازی های کامپیوتری">بازی های کامپیوتری</option>
+			</select>
+                           
+                                   
+	                
+
+							 <div class="form-group">
+							  <label for="sel1">جنسیت</label>
+							  <select class="form-control" id="sel1" name="gender">
+							  	<option value="{{request.user.profile.gender}}">{{request.user.profile.gender}}</option>
+							    <option value="مرد">مرد</option>
+							    <option value="زن">زن</option>
+							 
+							  </select>
+							</div> 
+
+							 <div class="form-group">
+							  <label for="sel1">شهر شما</label>
+							  <select class="form-control" id="sel1" name="city">
+							  	<option value="{{request.user.profile.city}}">{{request.user.profile.city}}</option>
+							  
+							    <option >تهران</option>
+							     <option >کرج</option>
+							      <option >مشهد</option>
+							       <option >تبریز</option>
+							        <option >اصفهان</option>
+							        <option >شیراز</option>
+							   
+							 
+							  </select>
+							</div> 
+
+							<label><i class="fa fa-instagram"></i> اینستاگرام</label>
+							<input placeholder="{{request.user.profile.instagram}}" type="text" name="instagram">
+
+							<label><i class="fa fa-telegram"></i> تلگرام</label>
+							<input placeholder="{{request.user.profile.telegram}}" type="text" name="telegram">
+
+							
+						</div>
+	
+						<button class="button margin-top-15">ذخیره تنظیمات</button>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+			<!-- Change Password -->
+			<form method="post">
+			<div class="col-lg-6 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+					<h4 class="gray">تغییر رمز عبور</h4>
+					<div class="dashboard-list-box-static">
+
+						<!-- Change Password -->
+						<div class="my-profile">
+							<label class="margin-top-0">رمز عبور فعلی</label>
+						
+							 {{form}}
+
+							<button class="button margin-top-15">تغییر رمز عبور</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+                  
+
+			<!-- Copyrights -->
+			<div class="col-md-12">
+				<div class="copyrights">© 1398 هم تیمی. تمامی حقوق محفوظ است.</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Content / End -->
+</form>
+
+
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+{% endblock content %}

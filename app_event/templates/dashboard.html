@@ -1,0 +1,161 @@
+
+{%extends 'base.html'%}
+{%load static%}
+<!-- Basic Page Needs
+================================================== -->
+
+
+{%block content%}
+
+
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>سلام، {{user.username}}</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="/">صفحه اصلی</a></li>
+							<li>داشبورد</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<!-- Notice -->
+		<div class="row">
+			<div class="col-md-12">
+					<div class="notification error closeable margin-bottom-30">
+					<p>برای نمایش کامل بلاک ها <strong>لطفا بخش پروفایل کاربری را  <a href="#"></a> </strong> تکمیل کنید</p>
+					<a class="close" href="#"></a>
+				</div>
+				{%for req in req%}
+			         {%if req.approved and req.user == request.user %}
+
+				<div class="notification success closeable margin-bottom-30">
+					<p>درخواست شما <strong>برای رویداد <a href="{%url 'event_detail' pk=req.pk %}"> {{req.event.event_name}}</a> </strong> تایید شده است!</p>
+					<a class="close" href="#"></a>
+				</div>
+				{%endif%}
+				{%endfor%}
+			</div>
+		</div>
+
+		<!-- Content -->
+		<div class="row">
+			
+
+			<!-- Item -->
+			<div class="col-lg-3 col-md-6">
+				<div class="dashboard-stat color-1">
+				
+                                       
+
+
+							<a href="{%url 'my_events' %}"><div class="col-md-12" ><font color="white"><h3 >رویداد های   شما</font></h3></div>
+		            
+					            {%for event in event|slice:":1" %}
+					  			
+					    
+                                    {%if event.creator == request.user %}
+							<div class="dashboard-stat-icon"><i class="im im-icon-Sport-Mode "></i></div></a>
+
+					
+     
+            
+			{%endif%}
+			
+			{%endfor%}
+
+				</div>
+			
+			</div>
+
+	<!-- Item -->
+			<div class="col-lg-3 col-md-6">
+				<div class="dashboard-stat color-2">
+					  
+					{%for req in req%}
+					 {%if req.event.creator == request.user %}
+					 
+					       {%if forloop.last == True %}
+					<a href="{%url 'waiting'  %}"><div class="dashboard-stat-content"><h4>{{forloop.counter}}</h4> 
+
+					 {%endif%}
+				{%endif%}
+			
+			{%endfor%}
+						<span ><font color="white">درخواست  عضویت در رویداد های شما</span></font></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Business-Mens"></i></div></a>
+				</div>
+			</div>
+
+
+			
+			<!-- Item -->
+			<div class="col-lg-3 col-md-6">
+				<div class="dashboard-stat color-3">
+				<form action="{%url 'cat'%}" method="GET">
+					    {%for req2 in req2 %}
+
+					   
+					 {%for event in event %}
+					  {%if req2.orgin_fav == event.Event_type %}
+					   {%if forloop.last == True %}
+					     
+					  
+					<div class="dashboard-stat-content" ><h4>{{forloop.counter}}</h4> 
+
+						<font color="white"><span>پیشنهاد ما به شما<button class="button medium" type="submit" name="type" value="{{req2.orgin_fav}}">نمایش</button></font></span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
+
+
+					    {%endif%}
+					    {%endif%}
+					  {%endfor%}
+					 
+					  {%endfor%}
+					
+
+					</form>
+				</div>
+			</div>
+
+			<!-- Item -->
+
+			<div class="col-lg-3 col-md-6">
+				<div class="dashboard-stat color-4">
+	{%for event in event|slice:":1" %}
+					<div class="col-md-12"><a href="{%url 'inbox' %}"><br><br>
+
+		{%endfor%}
+						<h4><font color="white">پیام ها</font></h4></div></a>	
+					<div class="dashboard-stat-icon"><i class="im im-icon-inbox"></i></div>
+				</div>
+					</div>
+		</div>
+
+    
+
+
+			<!-- Copyrights -->
+			
+		
+
+	</div>
+	<!-- Content / End -->
+
+
+
+<!-- Dashboard / End -->
+
+
+
+<!-- Wrapper / End -->
+
+{%endblock content%}
+<!-- Scripts

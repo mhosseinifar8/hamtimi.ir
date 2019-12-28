@@ -1,0 +1,206 @@
+
+{% extends "base2.html" %}
+{% block content %}
+	
+<head>
+	<meta name="description" content="آدرس,شماره تماس,و اطلاعا کامل تمام سالن های ورزشی  و اماکن ورزشی استان البرز" >
+
+   
+
+</head>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>اماکن ورزشی</h2><span>اطلاعات تماس ,آدرس و مشخصات تمام اماکن ورزشی کرج </span>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>اماکن ورزشی</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Search -->
+			<form action="{%url 'salon'%}" method="GET">
+		<div class="col-md-12">
+			<div class="main-search-input gray-style margin-top-0 margin-bottom-10">
+
+				<div class="main-search-input-item">
+					<input type="text"  name="n" placeholder="نام سالن ورزشی؟" value="{{request.GET.n}}"/>
+				</div>
+
+			<div class="main-search-input-item">
+					<select data-placeholder="موقعیت" name="c" class="chosen-select" value="{{request.GET.c}}">
+					  	   <option>کرج</option>
+					  	   <option>تهران(به زودی)</option>		
+						   <option>فردیس</option>
+						   <option>نظرآباد</option>
+						   <option>اشتهارد</option>
+					       <option>ساوجبلاغ</option>
+					     
+							</select>
+				</div>
+
+				<div class="main-search-input-item">
+					<select data-placeholder="تمام دسته ها" name="l" class="chosen-select" value="{{request.GET.l}}">
+					  	   <option>تمام دسته ها</option>	
+						   <option>سالن</option>
+						   <option>زمین چمن مصنوعی</option>
+						   <option>زمین چمن</option>
+					       <option>استخر</option>
+					       <option>باشگاه</option>
+					       <option>مدرسه فوتبال</option>
+					       <option>مجموعه ورزشی</option>
+					       <option>سوارکاری</option>
+							</select>
+				</div>
+
+				<button class="button" type="submit">جستجو</button>
+
+			</div>
+		</div>
+		</form>
+		<!-- Search Section / End -->
+
+
+		<div class="col-md-12">
+
+			<!-- Sorting - Filtering Section -->
+			<div class="row margin-bottom-25 margin-top-30">
+
+				<div class="col-md-6">
+					<!-- Layout Switcher -->
+					
+				</div>
+
+				<div class="col-md-6">
+					<div class="fullwidth-filters">
+						
+						<!-- Panel Dropdown -->
+						
+						<!-- Panel Dropdown / End -->
+
+						<!-- Panel Dropdown-->
+						
+						<!-- Panel Dropdown / End -->
+
+						<!-- Sort by -->
+						
+						<!-- Sort by / End -->
+
+					</div>
+				</div>
+
+			</div>
+			<!-- Sorting - Filtering Section / End -->
+
+
+			<div class="row">
+				  {%if result%}
+                   {%for salon in result%}
+				<div class="col-lg-4 col-md-6">
+					<a href="{%url 'salon_detail' salon_name=salon.salon_name%}" class="listing-item-container compact">
+						<div class="listing-item">
+							<img src="{{salon.salon_image}}" alt="">
+
+							<div class="listing-badge now-open">{{salon.salon_type}}</div>
+
+							<div class="listing-item-content">
+								
+								<h3>{{salon.salon_name}} <i class="verified-icon"></i></h3>
+								<span>{{salon.address}}</span>
+							</div>
+							
+						</div>
+					</a>
+				</div>
+					{%endfor%}
+				{%else%}	
+				<!-- Listing Item -->
+					{%for salon in salon%}
+				<div class="col-lg-4 col-md-6">
+					<a href="{%url 'salon_detail' salon_name=salon.salon_name%}" class="listing-item-container compact">
+						<div class="listing-item">
+							<img src="{{salon.salon_image}}" alt="">
+
+							<div class="listing-badge now-open">{{salon.salon_type}}</div>
+
+							<div class="listing-item-content">
+								
+								<h3>{{salon.salon_name}} <i class="verified-icon"></i></h3>
+								<span>{{salon.address}}</span>
+							</div>
+							
+						</div>
+					</a>
+				</div>
+					{%endfor%}
+				
+					{%endif%}
+				<!-- Listing Item / End -->
+
+
+			</div>
+
+			<!-- Pagination -->
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Pagination -->
+
+					<div class="pagination-container margin-top-20 margin-bottom-40">
+						<nav class="pagination">
+							<ul>  
+								 {%if salon.has_previous%}
+								<li><a href="?page={{salon.previous_page_number}}" class="current-page">قبلی</a></li>
+															  {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+								{%endif%}
+								
+								     <center>{{salon.number}} از {{salon.paginator.num_pages}}</center>
+								   
+								  {%if salon.has_next%}
+								   
+								<li><a href="?page={{salon.next_page_number}}" class="current-page">بعدی</a></li>
+						
+								
+								{%endif%}
+								
+								
+								
+							</ul>
+							
+						</nav>
+					
+					 
+					</div>
+
+				</div>
+			</div>
+			<!-- Pagination / End -->
+
+		</div>
+
+	</div>
+</div>
+
+
+
+		
+{% endblock content %}

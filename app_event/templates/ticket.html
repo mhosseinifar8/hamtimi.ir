@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	
+
+<!-- Content
+================================================== -->
+
+
+           <div class="col-md-3"></div>
+
+		<!-- Contact Form -->
+		<div class="col-md-6">
+<br>
+			<section id="contact">
+				<h4 class="headline margin-bottom-35">پشتیبانی</h4>
+
+				<div id="contact-message"></div> 
+
+					<form method="post" action="{%url 'support'%}"   autocomplete="on">
+						{%csrf_token%}
+
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<input name="name" type="text" value="{{request.user}}" readonly="" id="name" placeholder="نام شما" required="required" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div>
+								<select name="block" value="{{ticket.block}}">
+									<option value="راهنمایی">راهنمایی</option>
+									<option value="همکاری">همکاری</option>
+									<option value="مدیریت">مدیریت</option>
+									<option value="سایر موارد">سایر موارد</option>
+										
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<input name="title" type="text" id="subject" placeholder="موضوع" required="required" />
+					</div>
+
+					<div>
+						<textarea name="message" cols="40" rows="3" id="comments" placeholder="پیام" spellcheck="true" required="required"></textarea>
+					</div>
+
+					<input type="submit" class="submit button" id="submit" value="ارسال " />
+
+					</form>
+			</section>
+			<hr>
+			
+		<!-- Contact Form / End -->
+
+       
+
+
+
+
+	
+
+{% endblock content %}
+<!-- Footer / End -->
+
+

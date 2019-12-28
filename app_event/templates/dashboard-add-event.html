@@ -1,0 +1,350 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{%static 'app_event/scripts/picker/css/bootstrap.min.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" href="{%static 'app_event/scripts/picker/css/bootstrap-theme.min.css'%}" />
+    <link rel="stylesheet" href="{%static 'app_event/scripts/picker/css/jquery.Bootstrap-PersianDateTimePicker.css'%}" />
+
+    <script src="{%static 'app_event/scripts/picker/js/jquery-3.1.0.min.js'%}" type="text/javascript"></script>
+    <script src="{%static 'app_event/scripts/picker/js/bootstrap.min.js'%}" type="text/javascript"></script>
+    <link rel='stylesheet' href='form-style.css' type='text/css' />
+    
+    <style type="text/css">
+        body, table {
+            font-family: 'Segoe UI', Tahoma;
+            font-size: 14px;
+        }
+
+
+        li {list-style-type: none;
+font-size: 16pt;
+}
+.mail {
+margin: auto;
+padding-top: 10px;
+padding-bottom: 10px;
+width: 400px;
+background : #D8F1F8;
+border: 1px soild silver;
+color: #000
+}
+.mail h2 {
+margin-left: 38px;
+}
+input {
+font-size: 20pt;
+}
+input:focus, textarea:focus{
+background-color: lightyellow;
+}
+input submit {
+font-size: 12pt;
+}
+.rq {
+color: #FF0000;
+font-size: 10pt;
+}
+    </style>
+    
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>ساخت رویداد</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="/">صفحه اصلی</a></li>
+							<li><a href="{%url 'dashboard'%}">داشبورد</a></li>
+							<li>افزودن رویداد</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div id="add-listing">
+
+					<!-- Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> اطلاعات پایه</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+								<form action="{%url 'new'%}" name="form1"  method="post">
+									{% csrf_token %}
+								<h5>عنوان رویداد <i class="tip" data-tip-content="نام دلخواه برای جمع دوستانه خودتان"></i></h5>
+								<input class="form-control" type="text" value="" name="event_name" required >
+							</div>
+						</div>
+
+						<!-- Row -->
+						<div class="row with-forms">
+
+							<!-- Status -->
+							<div class="col-md-6">
+								<h5>دسته ها</h5>
+								<select class="chosen-select-no-single" name="event_type" required>
+									<option label="خالی">انتخاب یک دسته</option>	
+									<option value="فوتبال">فوتبال</option>
+									<option value="تنیس">تنیس</option>
+									<option value="بسکتبال">بسکتبال</option>
+									<option value="والیبال">والیبال</option>
+									<option value="پینتبال">پینتبال</option>
+									<option value="بازی های کامپیوتری">بازی های کامپیوتری</option>
+									<option value="شطرنج">شطرنج</option>
+									<option value="دیگر">دیگر</option>
+								</select>
+							</div>
+
+							<!-- Type -->
+							<div class="col-md-6">
+								<h5>نام مجموعه ورزشی<i class="tip"   data-tip-content="نام سالن یا مجموعه ای که رویداد در آن مکان برگزار میشود"></i></h5>
+								<input type="text" name='salon_name' placeholder="نام سالن ورزشی" required>
+							</div>
+
+						</div>
+						<!-- Row / End -->
+
+					</div>
+					<!-- Section / End -->
+
+					<!-- Section -->
+					<div class="add-listing-section margin-top-45">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-location"></i> موقعیت</h3>
+						</div>
+
+						<div class="submit-section">
+
+							<!-- Row -->
+							<div class="row with-forms">
+
+								<!-- City -->
+								<div class="col-md-6">
+									<h5>شهر</h5>
+									<select class="chosen-select-no-single" name="city" required>
+										<option label="خالی">انتخاب شهر</option>	
+										<option value="تهران">تهران</option>
+										<option value="کرج">کرج</option>
+										<option value="مشهد">مشهد</option>
+										<option value="تبریز">تبریز</option>
+										<option value="اصفهان">اصفهان</option>
+										<option value="شیراز">شیراز</option>
+										
+									</select>
+								</div>
+
+								<!-- Address -->
+								
+
+									<div class="col-md-6">
+									<h5>استان</h5>
+									<select class="chosen-select-no-single" name="state" required>
+										<option label="خالی">انتخاب استان</option>	
+										<option value="تهران">تهران</option>
+										<option value="البرز">البرز</option>
+										<option value="خراسان رضوی">خراسان رضوی</option>
+										<option value="تبریز">تبریز</option>
+										<option value="اصفهان">اصفهان</option>
+										<option value="فارس">فارس</option>
+										
+									</select>
+								</div>
+								<!-- City -->
+
+								<div class="col-md-12">
+									<h5>آدرس</h5>
+									<input type="text" name="address" placeholder="آِدرس محل برگزاری رویداد" required>
+								</div>
+							</div>
+							<!-- Row / End -->
+
+						</div>
+					</div>
+					<!-- Section / End -->
+
+
+					<!-- Section -->
+					
+					<!-- Section / End -->
+
+
+					<!-- Section -->
+					<div class="add-listing-section margin-top-45">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-docs"></i> جزئبات</h3>
+						</div>
+
+						<!-- Description -->
+						<div class="form">
+							<h5>توضیحات</h5>
+							<textarea class="WYSIWYG" name="des" cols="140" rows="3" id="summary" spellcheck="true" ></textarea>
+						</div>
+
+						<!-- Row -->
+						<div class="row with-forms">
+
+							<!-- Phone -->
+							<div class="col-md-4">
+								<h5>جنسیت</h5>
+								<select class="chosen-select-no-single" name="gender" required>
+										<option label="خالی">انتخاب جنسیت</option>	
+										<option value="آقایان">آقایان</option>
+										<option value="بانوان">بانوان</option>
+									
+										
+									</select>
+							</div>
+
+							<!-- Website -->
+							<div class="col-md-4">
+								<h5>تعداد کل<i class="tip" data-tip-content="تعداد کل کسانی که در این رویداد مجاز به همراهی شما  هستند" required></i></h5>
+								<input type="text" name="total" required>
+							</div>
+
+							<!-- Email Address -->
+							<div class="col-md-4">
+								<h5>تعداد افراد مجاز به ثبت نام<i class="tip"  name='salon_name' data-tip-content="تعداد افرادی که از سایت همتیمی مجاز به ثبت نام هستند" ></i> </h5>
+								<input type="text" name="needed" required>
+							</div>
+
+						</div>
+						<!-- Row / End -->
+
+
+						<!-- Row -->
+						<div class="row with-forms">
+
+							<!-- Phone -->
+							<div class="col-md-4">
+								<h5 class="fb-input"> هزینه رویداد<i class="tip"  name='salon_name' data-tip-content="هزینه کل سالن ورزشی یا مجموعه  و یا کل هزینه این رویداد .هزینه هر فرد توسط همتیمی محاسبه میشود"></i> </h5>
+								<input type="text" name="total_cost" placeholder="" required>
+							</div>
+
+							
+
+						</div>
+						<!-- Row / End -->
+
+
+						<!-- Checkboxes -->
+						
+						<!-- Checkboxes / End -->
+
+					<!-- Section / End -->
+
+</div>
+					
+
+					<!-- Section -->
+					<div class="add-listing-section margin-top-45">
+						
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-clock"></i> زمان</h3>
+							<!-- Switcher -->
+							
+						</div>
+						
+						<!-- Switcher ON-OFF Content -->
+						
+
+							
+
+						<!-- Switcher ON-OFF Content -->
+						
+
+        	<div class="col-md-3">
+								<h5 class="fb-input"> ساعت برگزاری </h5>
+								<input type="text" name="time" placeholder="" required>
+							</div>
+							<div class="col-md-3">
+								<h5 class="fb-input"> مدت زمان سانس</h5>
+								<input type="text" name="period" placeholder="" required>
+							</div>
+
+								
+							<div class="row">
+								<div class="col-md-6">
+                                     <div class="form-group">
+                                     	<h5 class="fb-input">تاریخ برگزاری </h5>
+        <label class="sr-only" for="exampleInput3">تاریخ</label>
+        <div class="input-group">
+            <div class="input-group-addon" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#exampleInput3">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+            <input type="text" name="date" class="form-control" id="exampleInput3" placeholder="تاریخ" data-mddatetimepicker="true" data-placement="right" data-englishnumber="true"  required/>
+       
+    </div>
+            </div>
+        </div>
+							
+
+						
+						<!-- Switcher ON-OFF Content / End -->
+
+					<!-- Section / End -->
+
+
+
+				</div>
+			</div>
+				<br><center><button class="button medium" type="submit">ثبت و ساخت رویداد</button></center>
+			</form>
+			<script type="text/javascript">
+    $('#input1').change(function() {
+        var $this = $(this),
+                value = $this.val();
+        alert(value);
+    });
+    $('#textbox1').change(function () {
+        var $this = $(this),
+                value = $this.val();
+        alert(value);
+    });
+    $('[data-name="disable-button"]').click(function() {
+        $('[data-mddatetimepicker="true"][data-targetselector="#input1"]').MdPersianDateTimePicker('disable', true);
+    });
+    $('[data-name="enable-button"]').click(function () {
+        $('[data-mddatetimepicker="true"][data-targetselector="#input1"]').MdPersianDateTimePicker('disable', false);
+    });
+</script>
+
+
+<script src="{%static 'app_event/scripts/picker/js/jalaali.js'%}" type="text/javascript"></script>
+<script src="{%static 'app_event/scripts/picker/js/jquery.Bootstrap-PersianDateTimePicker.js'%}" type="text/javascript"></script>
+<script type="text/javascript">
+	
+	function required()
+{
+var empt = document.form1.value;
+if (empt === "")
+{
+alert("Please input a Value");
+return false;
+}
+else 
+{
+alert('Code has accepted : you can try another');
+return true; 
+}
+}
+</script>
+	
+{% endblock content %}

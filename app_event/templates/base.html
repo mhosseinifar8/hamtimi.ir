@@ -1,0 +1,246 @@
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>{%block title%}{%endblock title%}</title>
+	{% block css %}
+
+             
+			 <link rel="stylesheet" href="{%static 'app_event/css/style.css'%}">
+             <link rel="stylesheet" href="{%static 'app_event/css/main-color.css'%}" id="colors">
+   
+
+			    
+	{% endblock css %}
+
+</head>
+<body >
+
+
+<div id="wrapper">
+{% block navbar %}
+	<header id="header-container" class="fixed fullwidth dashboard">
+
+	<!-- Header -->
+	<div id="header" class="not-sticky">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+			
+
+
+				<!-- Mobile Navigation -->
+				<div class="mmenu-trigger">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li><a href="/">صفحه اصلی</a></li>
+					
+					<li><a href="{%url 'event'%}">رویداد ها</a>
+				
+						</li>
+						<li><a class="current" href="#">پنل کاربری</a>
+							<ul>
+							    <li><a href="{%url 'dashboard'%}">داشبورد</a></li>
+								<li><a href="{%url 'my_events'%}">پیام ها</a></li>
+
+								
+								<li><a href="{%url 'my_events'%}">رویداد های من</a></li>
+								<li><a href="{%url 'coming_soon'%}">رزرو های من</a></li>
+								<li><a href="{%url 'new_event'%}">افزودن رویداد</a></li>
+								<li><a href="{%url 'my-profile'%}">پروفایل من</a></li>
+								
+							</ul>
+						</li>
+						 <li><a href="{%url 'salon'%}">سالن ها</a></li>
+
+						<li><a href="{%url 'blog'%}">بلاگ</a></li>
+			        </ul>
+			    </nav>
+
+				
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+			<!-- Right Side Content / End -->
+			<div class="right-side">
+				<!-- Header Widget -->
+				<div class="header-widget">
+					
+					<!-- User Menu -->
+					<div class="user-menu">
+
+						<div class="user-name"><span><img src="{{user.profile.avatar_url}}" alt=""></span>حساب من</div>
+						<ul>
+							<li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> داشبورد</a></li>
+							<li><a href="{%url 'inbox'%}"><i class="sl sl-icon-envelope-open"></i> پیام ها</a></li>
+							<li><a href="{%url 'coming_soon'%}"><i class="fa fa-calendar-check-o"></i> رزرو ها</a></li>
+							<li><a href="{%url 'signout'%}"><i class="sl sl-icon-power"></i> خروج</a></li>
+						</ul>
+					</div>
+
+					<a href="{%url 'new_event'%}" class="button border with-icon">افزودن رویداد <i class="sl sl-icon-plus"></i></a>
+				</div>
+				<!-- Header Widget / End -->
+			</div>
+			<!-- Right Side Content / End -->
+
+		</div>
+	</div>
+
+	<!-- Header / End -->
+
+</header>
+
+
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+{% endblock navbar %}
+
+{% block dashboard %}
+	<div id="dashboard">
+
+	<!-- Navigation
+	================================================== -->
+
+	<!-- Responsive Navigation Trigger -->
+	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> ناوبری داشبورد</a>
+
+	<div class="dashboard-nav">
+		<div class="dashboard-nav-inner">
+
+			<ul data-submenu-title="اصلی">
+				<li class="active"><a href="{%url 'dashboard'%}"><i class="sl sl-icon-settings"></i> داشبورد</a></li>
+				<li><a href="{%url 'inbox'%}"><i class="sl sl-icon-envelope-open"></i> پیام ها</a></li>
+					
+					
+				<li><a href="{%url 'coming_soon'%}"><i class="fa fa-calendar-check-o"></i> رزرو ها</a></li>
+				<li><a href="{%url 'coming_soon'%}"><i class="sl sl-icon-wallet"></i> کیف پول</a></li>
+			</ul>
+			
+			<ul data-submenu-title="رویداد ها">
+				<li><a href="{%url 'new_event'%}"><i class="sl sl-icon-plus"></i> افزودن رویداد</a></li>
+				<li><a><i class="sl sl-icon-layers"></i> مدیریت رویداد های من</a>
+					<ul>
+						<li><a href="{%url 'my_events'%}">فعال </a></li>
+						
+						 <li><a href="{%url 'waiting'%}">لیست انتظار </a></li>
+						<li><a href="{%url 'expire'%}">منقضی شده </a></li>
+					</ul>	
+				</li>
+				<li><a href="#"><i class="sl sl-icon-star"></i> پشتیبانی</a>
+					<ul>
+						<li><a href="{%url 'answer'%}">ارسال تیکت جدید</a></li>
+						<li><a href="{%url 'all_ticket'%}">تیکت ها</a></li>
+					</ul>
+				</li>
+			</ul>		
+
+			<ul data-submenu-title="اکانت">
+				<li><a href="{%url 'my-profile'%}"><i class="sl sl-icon-user"></i> پروفایل من</a></li>
+				<li><a href="{%url 'signout'%}"><i class="sl sl-icon-power"></i> خروج</a></li>
+			</ul>
+			
+		</div>
+
+	</div>
+
+{% endblock dashboard %}
+{%block content%} 
+
+{%endblock content%}
+{%block Copyrights%}
+    <div class="col-md-12">
+				<div class="copyrights">© 1398 هم تیمی. تمامی حقوق محفوظ است.</div>
+			</div>
+{%endblock Copyrights%}
+</div>
+
+
+
+
+
+
+
+{% block extra_js %}{% endblock extra_js %}
+
+
+
+{% block js %}
+    <script type="text/javascript" src="{%static 'app_event/scripts/jquery-2.2.0.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/mmenu.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/chosen.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/slick.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/rangeslider.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/magnific-popup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/waypoints.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/counterup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/jquery-ui.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/tooltips.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/custom.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/dropzone.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/moment.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'app_event/scripts/daterangepicker.js'%}"></script>
+
+
+
+	<!-- Google Autocomplete -->
+	<script>
+	  function initAutocomplete() {
+	    var input = document.getElementById('autocomplete-input');
+	    var autocomplete = new google.maps.places.Autocomplete(input);
+
+	    autocomplete.addListener('place_changed', function() {
+	      var place = autocomplete.getPlace();
+	      if (!place.geometry) {
+	        window.alert("No details available for input: '" + place.name + "'");
+	        return;
+	      }
+	    });
+
+		if ($('.main-search-input-item')[0]) {
+		    setTimeout(function(){ 
+		        $(".pac-container").prependTo("#autocomplete-container");
+		    }, 300);
+		}
+	}
+	</script>
+	
+
+
+	<!-- Typed Script -->
+	<script type="text/javascript" src="{%static 'app_event/scripts/typed.js'%}"></script>
+	<script>
+	var typed = new Typed('.typed-words', {
+	strings: ["رویداد های ورزشی"," سالن های ورزشی"," رویداد های تفریحی"],
+		typeSpeed: 80,
+		backSpeed: 80,
+		backDelay: 4000,
+		startDelay: 1000,
+		loop: true,
+		showCursor: true
+	});
+	</script>
+
+
+	<!-- Style Switcher
+	================================================== -->
+	
+{% endblock js %}
+</body>
+</html>

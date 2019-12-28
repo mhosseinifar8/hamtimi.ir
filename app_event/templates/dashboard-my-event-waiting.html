@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+		
+
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>رویداد های من</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="/">صفحه اصلی</a></li>
+							<li><a href="{url 'dashboard'}">داشبورد</a></li>
+							<li>رویداد های من</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			
+			<!-- Listings -->
+			<div class="col-lg-12 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+					<h4>رویداد های فعال</h4>
+					<ul>
+                            {%for waiting in eventt%}
+                                 {%if waiting.creator == request.user  %}
+                                
+
+                            
+                                  
+
+                              
+											<li>
+												<div class="list-box-listing">
+													<div class="list-box-listing-img"><a href="{%url 'user-list' pk=waiting.pk %}"><img src="{{waiting.img_type}}" alt=""></a></div>
+													<div class="list-box-listing-content">
+														<div class="inner">
+															<h3><a href="{%url 'user-list' pk=waiting.pk %}">درخواست های رویداد<br>{{waiting.event_name}}</a></h3>
+															
+															<div class="star-rating" data-rating="3.5">
+																<div class="rating-counter">(12 نظر)</div>
+															</div>
+																									
+									
+								
+                           </div>
+                       </div>
+
+                             
+						          {%elif request.user != waiting.creator%}
+						               <h2>ابتدا وارد شوید</h2>
+						             {%endif%}  
+                         
+                                 
+                         
+                               
+						</li>
+                          
+
+                            {%endfor%}  
+					</ul>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+	<!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+
+{% endblock content %}	

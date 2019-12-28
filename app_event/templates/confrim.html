@@ -1,0 +1,143 @@
+{% extends "base2.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>ارسال درخواست عضویت در رویداد</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>ارسال درخواست عضویت</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container">
+	<div class="row">
+
+		<!-- Content
+		================================================== -->
+		<div class="col-lg-8 col-md-8 padding-right-30">
+
+			<h3 class="margin-top-0 margin-bottom-30">اطلاعات شما</h3>
+
+			<div class="row">
+
+				<div class="col-md-6">
+					<label>نام</label>
+					<input  value="{{request.user.first_name}}" onClick="this.select();" readonly="">
+				</div>
+
+				<div class="col-md-6">
+					<label>نام خانوادگی</label>
+					<input value="{{request.user.last_name}}" onClick="this.select();" readonly="">
+				</div>
+
+				<div class="col-md-6">
+					<div class="input-with-icon medium-icons">
+						<label>شهر شما</label>
+						<input value="{{request.user.profile.city}}" onClick="this.select();" readonly="">
+						<i class="im im-icon-location"></i>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="input-with-icon medium-icons">
+						<label>تلفن</label>
+						<input value="{{request.user.profile.tell}}" onClick="this.select();" readonly="">
+						<i class="im im-icon-Phone-2"></i>
+					</div>
+				</div>
+
+			</div>
+
+
+			<h3 class="margin-top-55 margin-bottom-30">ارسال درخواست</h3>
+
+			<!-- Payment Methods Accordion -->
+			<div class="payment">
+				<form method="post">
+						{% csrf_token %}
+
+				<div class="payment-tab payment-tab-active">
+					<div class="payment-tab-trigger">
+						
+						<label>متن دلخواه خود را وارد کنید</label>
+						{{form.text|as_crispy_field}}
+						
+					</div>
+
+					<div class="payment-tab-content">
+						<p>این متن برای معرفی بیشتر و سوالت شما به مدیر رویداد نمایش داده</p>
+					</div>
+				</div>
+
+
+
+
+					</div>
+
+			<!-- Payment Methods Accordion / End -->
+		
+			<button class="button booking-confirmation-btn margin-top-40 margin-bottom-65" type="submit">تایید و پرداخت</button>
+		</div>
+			</form>
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-0 margin-bottom-60">
+
+			<!-- Booking Summary -->
+			<div class="listing-item-container compact order-summary-widget">
+				<div class="listing-item">
+					<img src="{{e.img_type}}" alt="">
+
+					<div class="listing-item-content">
+						
+						<h3>{{e.event_name}}</h3>
+						<span>{{e.state}},{{e.City}}</span>
+					</div>
+				</div>
+			
+			<div class="boxed-widget opening-hours summary margin-top-0">
+				<h3><i class="fa fa-calendar-check-o"></i> خلاصه رزرو</h3>
+				<ul>
+					<li>تاریخ <span>{{e.date}}</span></li>
+					<li>ساعت <span>{{e.time}}</span></li>
+					
+					<li class="total-costs">هزینه کل <span>{{e.for_you}} تومان</span></li>
+				</ul>
+
+			</div>
+			<!-- Booking Summary / End -->
+
+		</div>
+
+	</div>
+</div>
+<!-- Container / End -->
+
+
+
+{% endblock content %}

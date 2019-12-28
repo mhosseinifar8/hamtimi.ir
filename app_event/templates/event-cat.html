@@ -1,0 +1,226 @@
+{% extends "base2.html" %}
+
+
+{% block content %}
+	
+
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>آگهی ها</h2><span>چیدمان شبکه با نوار کناری</span>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="#">صفحه اصلی</a></li>
+						<li>آگهی ها</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Search -->
+		<div class="col-md-12">
+			<div class="main-search-input gray-style margin-top-0 margin-bottom-10">
+
+				<div class="main-search-input-item">
+					<input type="text" placeholder="دنبال چی میگردی؟" value=""/>
+				</div>
+
+				<div class="main-search-input-item location">
+					<div id="autocomplete-container">
+						<input id="autocomplete-input" type="text" placeholder="موقعیت">
+					</div>
+					<a href="#"><i class="fa fa-map-marker"></i></a>
+				</div>
+
+				<div class="main-search-input-item">
+					<select data-placeholder="تمام دسته ها" class="chosen-select" >
+					  	   <option>تمام دسته ها</option>	
+						   <option>فروشگاه ها</option>
+						   <option>هتل ها</option>
+						   <option>رستوران ها</option>
+					       <option>باشگاه ها</option>
+					       <option>رویداد ها</option>
+							</select>
+				</div>
+
+				<button class="button">جستجو</button>
+			</div>
+		</div>
+		<!-- Search Section / End -->
+
+
+		<div class="col-md-12">
+
+			<!-- Sorting - Filtering Section -->
+			<div class="row margin-bottom-25 margin-top-30">
+
+				<div class="col-md-6">
+					<!-- Layout Switcher -->
+					<div class="layout-switcher">
+						<a href="#" class="grid active"><i class="fa fa-th"></i></a>
+						<a href="listings-list-full-width.html" class="list"><i class="fa fa-align-justify"></i></a>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="fullwidth-filters">
+						
+						<!-- Panel Dropdown -->
+						<div class="panel-dropdown wide float-right">
+							<a href="#">فیلترهای بیشتر</a>
+							<div class="panel-dropdown-content checkboxes">
+
+								<!-- Checkboxes -->
+								<div class="row">
+									<div class="col-md-6">
+										<input id="check-a" type="checkbox" name="check">
+										<label for="check-a">آسانسور در ساختمان</label>
+
+										<input id="check-b" type="checkbox" name="check">
+										<label for="check-b">فضای کاری دوستانه</label>
+
+										<input id="check-c" type="checkbox" name="check">
+										<label for="check-c">رزرو فوری</label>
+
+										<input id="check-d" type="checkbox" name="check">
+										<label for="check-d">اینترنت بیسیم</label>
+									</div>	
+
+									<div class="col-md-6">
+										<input id="check-e" type="checkbox" name="check" >
+										<label for="check-e">پارکینگ رایگان در محل</label>
+
+										<input id="check-f" type="checkbox" name="check" >
+										<label for="check-f">پارکینگ رایگان در خیابان</label>
+
+										<input id="check-g" type="checkbox" name="check">
+										<label for="check-g">سیگار کشیدن مجاز است</label>	
+
+										<input id="check-h" type="checkbox" name="check">
+										<label for="check-h">رویداد ها</label>
+									</div>
+								</div>
+								
+								<!-- Buttons -->
+								<div class="panel-buttons">
+									<button class="panel-cancel">لغو</button>
+									<button class="panel-apply">اعمال</button>
+								</div>
+
+							</div>
+						</div>
+						<!-- Panel Dropdown / End -->
+
+						<!-- Panel Dropdown-->
+						<div class="panel-dropdown float-right">
+							<a href="#">فاصله شعاع</a>
+							<div class="panel-dropdown-content">
+								<input class="distance-radius" type="range" min="1" max="100" step="1" value="50" data-title="شعاع اطراف مقصد انتخاب شده">
+								<div class="panel-buttons">
+									<button class="panel-cancel">غیر فعال</button>
+									<button class="panel-apply">اعمال</button>
+								</div>
+							</div>
+						</div>
+						<!-- Panel Dropdown / End -->
+
+						<!-- Sort by -->
+						
+						<div class="sort-by">
+							<div class="sort-by-select">
+								<select data-placeholder="سفارش پیش فرض"  class="chosen-select-no-single">
+									<option>فوتبال</option>	
+									<option>بالاترین امتیاز</option>
+									<option>بیشتر بازجویی</option>
+									<option>جدیدترین لیست ها</option>
+									<option>قدیمی ترین لیست ها</option>
+								</select>
+							</div>
+						</div>
+
+						<form action="{%url 'cat'%}" method="post">
+							{%csrf_token%}
+
+							<button class="button" type="submit" name="type" value="فوتبال">football</button>
+								<button class="button" type="submit" name="type" value="تنیس">fol</button>
+						
+						</form>
+						<!-- Sort by / End -->
+
+					</div>
+				</div>
+
+			</div>
+			<!-- Sorting - Filtering Section / End -->
+
+
+			<div class="row">
+
+				<!-- Listing Item -->
+				<div class="col-lg-4 col-md-6">
+
+						{%for result in result%}
+					<a href="listings-single-page.html" class="listing-item-container compact">
+						<div class="listing-item">
+							<img src="images/listing-item-01.jpg" alt="">
+
+							<div class="listing-badge now-open">{{result.Event_type}}</div>
+
+							<div class="listing-item-content">
+								<div class="numerical-rating" data-rating="3.5"></div>
+								<h3>{{result.event_name}}<i class="verified-icon"></i></h3>
+								<span>{{result.City}}</span>
+							</div>
+							<span class="like-icon"></span>
+						</div>
+					</a>
+				</div>
+				<!-- Listing Item / End -->
+
+
+				<!-- Listing Item / End -->
+
+			</div>
+
+			<!-- Pagination -->
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Pagination -->
+					<div class="pagination-container margin-top-20 margin-bottom-40">
+						<nav class="pagination">
+							<ul>
+								<li><a href="#" class="current-page">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+	
+			
+				    
+				{%endfor%}    
+
+ 			</div>
+			<!-- Pagination / End -->
+
+		</div>
+
+	</div>
+</div>
+
+{% endblock content %}

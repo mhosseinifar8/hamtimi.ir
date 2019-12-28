@@ -1,0 +1,157 @@
+{% extends "base2.html" %}
+{% block content %}
+	
+<head>
+	
+
+  
+
+</head>
+<!-- Header Container / End -->
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>جست و جو</h2><span>سالن های ورزشی و رویداد ها</span>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>جست و جو</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Search -->
+		<div class="col-md-12">
+			<div class="main-search-input gray-style margin-top-0 margin-bottom-10">
+
+				<div class="main-search-input-item">
+					<form action="{%url 'search'%}" method="GET">
+					<input type="text" name='q' placeholder="دنبال چی میگردی؟" value="{{request.GET.q}}"/>
+				</div>
+		<div class="main-search-input-item">
+					<select data-placeholder="دسته ها" name='t' class="chosen-select" value='{{request.GET.t}}' >
+					  	   <option></option>	
+						   <option>فوتبال</option>
+						   <option>پینت بال</option>
+						   <option>بسکتبال</option>
+					       <option>والیبال</option>
+					       <option>شطرنج</option>
+					       <option>بازی های کامپیوتری</option>
+					       <option>تنیس</option>
+					       <option>دیگر</option>
+							</select>
+				</div>
+
+				<div class="main-search-input-item">
+					<select data-placeholder="شهر ها" name='n' class="chosen-select" value='{{request.GET.n}}' >
+					  	   <option>تهران</option>	
+						   <option>کرج</option>
+						   <option>تبریز</option>
+						   <option>مشهد</option>
+					       <option>شیراز</option>
+					       <option>اصقهان</option>
+							</select>
+				</div>
+
+				<button class="button"  type='submit' name='submit'>جستجو</button>
+			</form>
+			</div>
+		</div>
+		<!-- Search Section / End -->
+
+
+		<div class="col-md-12">
+
+			<!-- Sorting - Filtering Section -->
+			<div class="row margin-bottom-25 margin-top-30">
+
+		
+				
+
+			</div>
+			<!-- Sorting - Filtering Section / End -->
+
+
+			<div class="row">
+				
+				{%if result %}
+				
+				
+                   {%for result in result %}
+				
+		
+				<!-- Listing Item -->
+				<div class="col-lg-4 col-md-6">
+					<a href="listings-single-page.html" class="listing-item-container compact">
+						<div class="listing-item">
+							<img src="{{result.img_type.url}}" alt="">
+
+							<div class="listing-badge now-open">{{result.Event_type}}</div>
+
+							<div class="listing-item-content">
+								<div class="numerical-rating" data-rating="3.5"></div>
+								<h3>{{result.event_name}}<i class="verified-icon"></i></h3>
+								<span>{{result.City}}</span>
+							</div>
+							<span class="like-icon"></span>
+						</div>
+					</a>
+				</div>
+				<!-- Listing Item / End -->
+{%endfor%}
+{%else%}
+    <p>پیدا نشد دوباره تلاش کنید</p>
+    {%endif%}
+
+
+
+				<!-- Listing Item / End -->
+
+			</div>
+
+			<!-- Pagination -->
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Pagination -->
+					<div class="pagination-container margin-top-20 margin-bottom-40">
+						<nav class="pagination">
+							<ul>
+								<li><a href="#" class="current-page">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- Pagination / End -->
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+{% endblock content %}

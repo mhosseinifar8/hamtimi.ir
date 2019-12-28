@@ -1,0 +1,195 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+	
+
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="user-profile-titlebar">
+					<div class="user-profile-avatar"><img src="{{pro.profile.avatar_url}}" alt=""></div>
+					<div class="user-profile-name">
+						<h2>{{pro.username}}</h2>
+						<div class="star-rating" data-rating="5">
+							
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row sticky-wrapper">
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-0">
+				
+			<!-- Verified Badge -->
+			<br><div class="verified-badge with-tip" data-tip-content="در صورت پر کردن فیلد نام و نام خانوادگی این فیلد نمایش داده میشود">
+				<i class="sl sl-icon-user-following"></i> {{pro.first_name}} {{pro.last_name}}
+			</div>
+
+			<!-- Contact -->
+			<div class="boxed-widget margin-top-30 margin-bottom-50">
+				<h3>تماس</h3>
+				<ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i>{{pro.profile.tell}}</li>
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="fc889391bc99849d918c9099d29f9391">[email&#160;protected]</span></a></li>
+				</ul>
+
+				<ul class="listing-details-sidebar social-profiles">
+					<li><a href="{{pro.profile.instagram}}" class="facebook-profile"><i class="fa fa-facebook-square"></i> اینستاگرام</a></li>
+					<li><a href="{{pro.profile.telegram}}" class="twitter-profile"><i class="fa fa-twitter"></i> تلگرام</a></li>
+					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
+				</ul>
+
+				<!-- Reply to review popup -->
+				<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+					<div class="small-dialog-header">
+						<h3>ارسال پیام</h3>
+					</div>
+					<div class="message-reply margin-top-0">
+						<textarea cols="40" rows="3" placeholder="پیام شما به جعفر"></textarea>
+						<button class="button">ارسال پیام</button>
+					</div>
+				</div>
+
+				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> ارسال پیام</a>
+			</div>
+			<!-- Contact / End-->
+
+		</div>
+		<!-- Sidebar / End -->
+
+
+		<!-- Content
+		================================================== -->
+	
+		<div class="col-lg-8 col-md-8 padding-left-30">
+         
+         	<div class="notification success closeable">
+         		<label>نام:</label>
+				<p>{{pro.profile.first_name}}</p>
+			
+			
+			</div>
+
+		</div>
+			<div class="col-lg-8 col-md-8 padding-left-30">
+         
+         	<div class="notification success closeable">
+         		<label>نام خانوادگی:</label>
+				<p>{{pro.profile.last_name}}</p>
+			
+			
+			</div>
+
+		</div>
+			<div class="col-lg-8 col-md-8 padding-left-30">
+         
+         	<div class="notification success closeable">
+         		<label>جنسیت:</label>
+				<p>{{pro.profile.gender}}</p>
+
+			</div>
+			<div class="notification notice closeable">
+				<label>بیوگرافی:</label>
+				<p>{{pro.profile.bio}}</p>
+
+					<h3 class="listing-desc-headline">علاقهمندی ها</h3>
+				<ul class="listing-features checkboxes margin-top-0">
+					{%if pro.profile.favorite%}
+					{%for fav in pro.profile.favorite%}
+					<li>{{fav}}</li>
+			     
+				{%endfor%}
+				{%endif%}
+				</ul>
+				
+
+			
+			
+			</div>
+			<div class="notification warning closeable">
+				<label>شهر</label>
+				<p>{{pro.profile.city}}</p><hr><br>
+				<label>تاریخ تولد</label>
+				<p>{{pro.profile.birth_date }}</p>
+				
+			</div>
+
+		</div>
+
+		
+
+			<h3 class="margin-top-0 margin-bottom-40">رویداد های {{pro.username}}</h3>
+
+
+
+			<!-- Listings Container -->
+			<div class="row">
+				<!-- Listing Item -->
+				<div class="col-lg-12 col-md-12">
+					<div class="listing-item-container list-layout">
+             {%for event in event%}
+
+                {%if event.creator == pro%}
+						<a href="{{event.event_url}}" class="listing-item">
+							
+							<!-- Image -->
+							<div class="listing-item-image">
+								<img src="{{event.img_type}}" alt="">
+								<span class="tag"></span>
+							</div>
+							
+							<!-- Content -->
+							<div class="listing-item-content">
+								<div class="listing-badge now-open">{{event.Event_type}}</div>
+
+								<div class="listing-item-inner">
+									<h3>سالن ورزشی: {{event.saloon_name}}</h3>
+									<p>{{event.City}}</p>
+									<p>زمان{{event.date}}</p>
+									<p>هزینه {{event.for_you}} تومان</p>
+
+									
+									<div class="star-rating" data-rating="3.5">
+										<div class="rating-counter">(12 نظر)</div>
+									</div>
+								</div>
+
+								<span class="like-icon"></span>
+							</div>
+						</a>
+				{%endif%}
+				{%endfor%}
+					</div><br><br><br><br>
+				<!-- Listing Item / End -->
+
+</div>
+		</div>	
+
+			</div>
+			<!-- Listings Container / End -->
+
+				
+			
+
+				<!-- Pagination / End -->
+			</div>
+		</div>
+
+
+		</div>
+
+	</div>
+</div>
+{% endblock content %}

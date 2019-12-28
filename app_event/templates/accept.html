@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block content %}
+    	   {%for t in ev.Accept.all%}
+    	       
+			      {{t.text}}
+			      {{t.user}}
+			      {{t.event}}
+			    
+			   {%endfor%}  
+
+   <form method="post">{%csrf_token%}
+	{{form.as_p}}
+	<button type="submit" class="btn">send</button>
+</form>
+{% endblock content %}

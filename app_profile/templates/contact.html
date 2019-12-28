@@ -1,0 +1,113 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+	
+
+
+<!-- Content
+================================================== -->
+
+<!-- Map Container -->
+<div class="contact-map margin-bottom-60">
+
+   <img src="{%static 'app_event/img/model1.jpg'%}" height="450">
+	<!-- Google Maps / End -->
+
+	<!-- Office -->
+	<div class="address-box-container">
+		<div class="address-container" data-background-image="images/our-office.jpg">
+			<div class="office-address">
+				<h3>ما در شبکه های مجازی</h3>
+				<ul>
+					<li><a href="https://ir.linkedin.com/in/mohammad-hosseinifar-409a3716a?trk=people-guest_profile-result-card_result-card_full-click"><img src="{%static 'app_event/img/linkdin.png'%}" height="60" width="60"></a></li>
+					<li><a  href="instagram.com/hamtimi.ir"><img src="{%static 'app_event/img/instagram.png'%}" height="60" width="60"></a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Office / End -->
+
+</div>
+<div class="clearfix"></div>
+<!-- Map Container / End -->
+
+
+<!-- Container / Start -->
+<div class="container">
+
+	<div class="row">
+
+		<!-- Contact Details -->
+		<div class="col-md-4">
+
+			<h4 class="headline margin-bottom-30">آدرس ما</h4>
+
+			<!-- Contact Details -->
+			<div class="sidebar-textbox">
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+
+				<ul class="contact-details">
+					<li><i class="fas fa-phone"></i> <strong>تلفن:</strong> <span>09128624200</span></li>
+					<li><i class="fas fa-print"></i> <strong>فکس:</strong> <span>(026) 34461187 </span></li>
+					<li><i class="fas fa-laptop"></i> <strong>وب:</strong> <span><a href="https://www.mhosseinifar.me">mhosseinifar.me</a></span></li>
+					<li><i class="fas fa-envelope-open-text"></i> <strong>ایمیل:</strong><span>info@hamtimi(dot)ir</span></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- Contact Form -->
+		<div class="col-md-8">
+
+			<section id="contact">
+				<h4 class="headline margin-bottom-35">فرم تماس</h4>
+
+				<div id="contact-message"></div> 
+
+					<form method="post"  autocomplete="on">
+						{%csrf_token%}
+
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<input name="name" type="text" id="name" placeholder="نام شما" required="required" />
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div>
+								<input name="email" type="email" id="email" placeholder="آدرس ایمیل" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<input name="title" type="text" id="subject" placeholder="موضوع" required="required" />
+						<input name="tell" type="text" id="tell" placeholder="شماره تماس" required="required" />
+					</div>
+
+					<div>
+						<textarea name="message" cols="40" rows="3" id="comments" placeholder="پیام" spellcheck="true" required="required"></textarea>
+					</div>
+
+					<input type="submit" class="submit button" id="submit" value="ارسال پیام" />
+
+					</form>
+					{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+			</section>
+		</div>
+		<!-- Contact Form / End -->
+
+	</div>
+
+</div>
+<!-- Container / End -->
+
+{% endblock content %}

@@ -1,0 +1,203 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+	
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>بلاگ</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>بلاگ</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+
+	<!-- Blog Posts -->
+	<div class="blog-page">
+	<div class="row">
+		<div class="col-lg-9 col-md-8 padding-right-30">
+
+			<!-- Blog Post -->
+				{%for blog in blog%}
+			<div class="blog-post">
+				
+				<!-- Img -->
+				<a href="{%url 'post' title=blog.title %}" class="post-img">
+					<img src="{{blog.image.url}}" alt="" height="500">
+				</a>
+				
+				<!-- Content -->
+				<div class="post-content">
+					<h3><a href="{%url 'post' title=blog.title %}">{{blog.title}}</a></h3>
+
+					<ul class="post-meta">
+						<li>{{blog.create_time}}</li>
+						<li><a href="#">دسته {{blog.cat}}</a></li>
+						
+					</ul>
+
+					<p>{{blog.descript}}</p>
+
+					<a href="{%url 'post' title=blog.title %}" class="read-more">ادامه مطلب <i class="fa fa-angle-right"></i></a>
+				</div>
+
+					{%endfor%}
+			</div>
+			<!-- Blog Post / End -->
+
+
+		
+
+
+			<!-- Pagination -->
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Pagination -->
+					<div class="pagination-container margin-bottom-40">
+						<nav class="pagination">
+							<ul>
+								 {%if blog.has_previous%}
+								<li><a href="?page={{blog.previous_page_number}}"class="current-page">قبلی</a></li>
+								  {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+								{%endif%}
+								  {%for i in blog.paginator.page_range%}
+								    {%if blog.number == i%}
+								      <li class="active">{{i}}</li>
+								      {% else %}
+								         <li><a href="?page={{i}}">{{i}}</a></li>
+								         {%endif%}
+								         {%endfor%}
+								    
+								   {%if blog.has_next%}
+								  
+								<li><a href="?page={{blog.next_page_number}}">بعدی</a></li>
+								<center>{{blog.number}} از {{blog.paginator.num_pages}}</center>
+								{%endif%}
+								
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- Pagination / End -->
+
+		</div>
+    </div>
+    	<!-- Widgets -->
+	<div class="col-lg-3 col-md-4">
+		<div class="sidebar right">
+			
+
+			<!-- Widget -->
+			<div class="widget">
+				<h3 class="margin-top-0 margin-bottom-25">جستجو در بلاگ</h3>
+				<form action="{%url 'search_blog'%}" method='get'>
+				<div class="search-blog-input">
+					<div class="input">
+						<input class="search-field" name="s" id="s" type="text" placeholder="کلمه کلیدی خود را وارد کنید" value=""/>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</form>
+			<!-- Widget / End -->
+
+
+			<!-- Widget -->
+			<div class="widget margin-top-40">
+				<h3>هر سوالی دارید؟</h3>
+				<div class="info-box margin-bottom-10">
+					<p>سوالی دارید؟ هر سوالی داشتید با ما در تماس باشید</p>
+					<a href="{%url 'contact'%}" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> همراه شما هستیم</a>
+				</div>
+			</div>
+			<!-- Widget / End -->
+
+
+			<!-- Widget -->
+			<div class="widget margin-top-40">
+
+				<h3>اخرین پست ها</h3>
+								 {%for blog in blog|slice:":3"%}
+				<ul class="widget-tabs">
+
+					<!-- Post #1 -->
+					
+					
+					<!-- Post #3 -->
+					<li>
+						<div class="widget-content">
+							<div class="widget-thumb">
+								<a href="{%url 'post' title=blog.title %}"><img src="{{blog.image.url}}" alt="" height="20" width="20"></a>
+							</div>
+							
+							<div class="widget-text">
+								<h5><a href="{%url 'post' title=blog.title %}">{{blog.descript}}</a></h5>
+								<span>{{blog.time}}</span>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+							{%endfor%}
+			<!-- Widget / End-->
+
+
+			<!-- Widget -->
+			<div class="widget margin-top-40">
+				<center><h3 class="margin-bottom-25">اجتماعی ها</h3></center>
+				<ul class="social-icons rounded">
+					<li><a class="instagram" href="www.instagram.com/hamtimi.ir"><i class="icon-instagram"></i></a></li>
+					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+
+			</div>
+			<!-- Widget / End-->
+   </div>
+
+	<!-- Blog Posts / End -->
+
+
+
+
+			<div class="clearfix"></div>
+		
+		     <div class="margin-bottom-40"></div>
+
+		</div>	
+
+	</div>
+
+	<!-- Sidebar / End -->
+
+
+</div>
+</div>
+
+
+
+{% endblock content %}

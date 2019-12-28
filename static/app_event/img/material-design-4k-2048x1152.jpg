@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Just a moment...</title>
+  <style type="text/css">
+    html, body {width: 100%; height: 100%; margin: 0; padding: 0;}
+    body {background-color: #ffffff; font-family: Helvetica, Arial, sans-serif; font-size: 100%;}
+    h1 {font-size: 1.5em; color: #404040; text-align: center;}
+    p {font-size: 1em; color: #404040; text-align: center; margin: 10px 0 0 0;}
+    #spinner {margin: 0 auto 30px auto; display: block;}
+    .attribution {margin-top: 20px;}
+    @-webkit-keyframes bubbles { 33%: { -webkit-transform: translateY(10px); transform: translateY(10px); } 66% { -webkit-transform: translateY(-10px); transform: translateY(-10px); } 100% { -webkit-transform: translateY(0); transform: translateY(0); } }
+    @keyframes bubbles { 33%: { -webkit-transform: translateY(10px); transform: translateY(10px); } 66% { -webkit-transform: translateY(-10px); transform: translateY(-10px); } 100% { -webkit-transform: translateY(0); transform: translateY(0); } }
+    .bubbles { background-color: #404040; width:15px; height: 15px; margin:2px; border-radius:100%; -webkit-animation:bubbles 0.6s 0.07s infinite ease-in-out; animation:bubbles 0.6s 0.07s infinite ease-in-out; -webkit-animation-fill-mode:both; animation-fill-mode:both; display:inline-block; }
+  </style>
+
+    <script type="text/javascript">
+  //<![CDATA[
+  (function(){
+    var a = function() {try{return !!window.addEventListener} catch(e) {return !1} },
+    b = function(b, c) {a() ? document.addEventListener("DOMContentLoaded", b, c) : document.attachEvent("onreadystatechange", b)};
+    b(function(){
+      var a = document.getElementById('cf-content');a.style.display = 'block';
+      setTimeout(function(){
+        var s,t,o,p,b,r,e,a,k,i,n,g,f, SHMNkYc={"oSNEm":+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![])+(+[]))};
+        g = String.fromCharCode;
+        o = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+        e = function(s) {
+          s += "==".slice(2 - (s.length & 3));
+          var bm, r = "", r1, r2, i = 0;
+          for (; i < s.length;) {
+              bm = o.indexOf(s.charAt(i++)) << 18 | o.indexOf(s.charAt(i++)) << 12
+                      | (r1 = o.indexOf(s.charAt(i++))) << 6 | (r2 = o.indexOf(s.charAt(i++)));
+              r += r1 === 64 ? g(bm >> 16 & 255)
+                      : r2 === 64 ? g(bm >> 16 & 255, bm >> 8 & 255)
+                      : g(bm >> 16 & 255, bm >> 8 & 255, bm & 255);
+          }
+          return r;
+        };
+        t = document.createElement('div');
+        t.innerHTML="<a href='/'>x</a>";
+        t = t.firstChild.href;r = t.match(/https?:\/\//)[0];
+        t = t.substr(r.length); t = t.substr(0,t.length-1); 
+        a = document.getElementById('jschl-answer');
+        f = document.getElementById('challenge-form');
+        ;SHMNkYc.oSNEm-=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm+=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(+[])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![])+(+!![])+(!+[]+!![]+!![]));SHMNkYc.oSNEm-=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm+=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+[])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm*=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+!![])+(+!![])+(+[])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm*=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm+=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![])+(+[])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]));SHMNkYc.oSNEm+=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm-=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(+[])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]))/+((!+[]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![]+!![]));SHMNkYc.oSNEm-=+((!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![])+(!+[]+!![])+(!+[]+!![]+!![]+!![])+(!+[]+!![]+!![]))/+((+!![]+[])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![])+(+!![])+(!+[]+!![]+!![]+!![]+!![]+!![])+(!+[]+!![]+!![]+!![]+!![])+(+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]));a.value = (+SHMNkYc.oSNEm + t.length).toFixed(10); '; 121'
+        f.action += location.hash;
+        f.submit();
+      }, 4000);
+    }, false);
+  })();
+  //]]>
+</script>
+
+
+</head>
+<body>
+  <table width="100%" height="100%" cellpadding="20">
+    <tr>
+      <td align="center" valign="middle">
+          <div class="cf-browser-verification cf-im-under-attack">
+  <noscript><h1 data-translate="turn_on_js" style="color:#bd2426;">Please turn JavaScript on and reload the page.</h1></noscript>
+  <div id="cf-content" style="display:none">
+    
+    <div>
+      <div class="bubbles"></div>
+      <div class="bubbles"></div>
+      <div class="bubbles"></div>
+    </div>
+    <h1><span data-translate="checking_browser">Checking your browser before accessing</span> hdqwalls.com.</h1>
+    
+    <p data-translate="process_is_automatic">This process is automatic. Your browser will redirect to your requested content shortly.</p>
+    <p data-translate="allow_5_secs">Please allow up to 5 seconds&hellip;</p>
+  </div>
+   
+  <form id="challenge-form" action="/download/material-design-4k-2048x1152.jpg?__cf_chl_jschl_tk__=568da277b2884d9daf7b20e67e00fa19ac10071f-1576448072-0-ATFI5G9278mMg4t-ODsNnHq0TU5OSv-C8NJN45u3qzN1herrbsWl_v2mPXIIJNSUxaspfPFfwKioQldks3PT4iQH3yTESNpBAlP1ysxTqSCUmsMh6Hw-A6ane0iM4z9n-H3AKkPsJOFexXeiK7G4ea07uQaaXzUszciuy8I3-KHdqEMylYzpBTPxWY78ffGLyJ6q4KhOpn7M_cpFd8EILf0CG5IMoQf2e79mF_JfRPaW0mtsgM6And5Pjcul6jCKUJTcLeV_4K3Rg_tOAmbS_-Um2J_B7HWkuyo6NnoLqxoTHGWdcGAkGSOQsu_4Zo59PdoHD_MNDG2z-ILc10BGQ_SN455REiUjQi9l2TIhuNUxwyLXG9wJ0FxVCsGQT8qfrQ" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="r" value="03a6b1fa29526d490326c45f04454a94c7617559-1576448072-0-Ad2VqwB9StbwJ0gY8A/0f9jNdTAsIh1u6CLwaKes36bOlYpBH6x+STtEorU5SKhBbF7qZnT1m7P7pTp9hrEgFp3GvjxIzfGuiDqiV+t/4kHZPt5V5ospVKJ0TwFJhoBwcmGJG6hGW8VKWS7nLWWzg9h2v1BglOA3CTjpUQGuhxnLPdIar+sdzh/IebEZiirOBU2U/e5ZAzbNKpfLmJ821LZbFYNaWLHRsYzY5J+qJw2wJhn38hIr1TyWbHJ6/ybrfzlSiEW6v1HJ/5Cx4VqM3+ipnV2i9+wyIqSh8jHuUyDdaVNoSoU6yAVD/lAn1h1CCssO7x4+LwoMMK5FXBz2Bu+m2DdauAijNTWwmyx+XkbAf61eE0JHiazJre218pn4Dn9fb+OSFM+zqkmHp1+9DssJIAqPUEx5j4VG5dvvIBZZ4PZPtgG04QBel1/h0riDqNes9Lh8peXJ+0eYpv+dncr6IUsfYqkAMhRieazTCYBuaEpj/cleb32hJvNy/1hlaShBLu0WSmes3YtjdQ8BonIx1H/UyEqBSZoAMyW+YVbLdLRC8+fKOC+Neeg6yhDrima+UwjwQb2IQt535MtOzF6EMEvIZ1pGnLrEZEbnPPq52IVl7CkrWs6rs3XW+t/pSZnUmlKwDzIy+Wvsh01SYmjHo/3suPCVPcTtgdMjHAJu8LIWpjf+9n+pJhES/SmMPD/uCUgxEbSpghPNL0KkMH5pnSxQjkueTOgYj2QJXSLPzPrhVsXkhrYa8tMMwREFM9j2HPJ994muZe8BHeLw+y5vNbdxBJkvTQLk4iJ/L6CGT/CnrCMnDO/zieBQw7DX9Ad8j+V5HH8ZpsoUDtYaKTdY6L7eqQnhi8wbWMedf+7Uc6E2HPhDtELZ1Gkv7GGzgzSlbc05T1bJrJ1lSaJFophYl2J60FZdxDnC5qxiFcDfNDIsb4HajQUpTr+RGwgYygVKYrlpix3GE7kkxb55e02puxQY91h/er0/n7jgXVKCrmL9jgb0yOti7dIYxs8dkNszUHsCcc70hz2xY30/jacYOCZ4jn2qRgIHwL4aJbIa2Wzy+rPLL4pPEm21p7P+SNMrJAsazfVoF60GdOkfGDZ+pB6VB7AT0Xf+ybMoToQBffuL6K5DAVe3ELK5+CH2hk4bKn4Mrk7nO4bFy/AuyEWm5OB6hXUUeBtwFZTy2k4PvTXvmORdA6uToweEIzw40w=="></input>
+    <input type="hidden" name="jschl_vc" value="b40068ace3c998e1f1062f667bc4012f"/>
+    <input type="hidden" name="pass" value="1576448076.503-K8hRqfEREO"/>
+    <input type="hidden" id="jschl-answer" name="jschl_answer"/>
+  </form>
+  
+</div>
+
+          
+          <div class="attribution">
+            <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=iuam" target="_blank" style="font-size: 12px;">DDoS protection by Cloudflare</a>
+            <br>
+            Ray ID: 545bc5651e43644f
+          </div>
+      </td>
+     
+    </tr>
+  </table>
+</body>
+</html>

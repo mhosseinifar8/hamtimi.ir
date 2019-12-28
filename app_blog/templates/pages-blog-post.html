@@ -1,0 +1,256 @@
+title{% extends "base2.html" %}
+{% load static %}
+{% load social_share %}
+{% block content %}
+	
+<head>
+	<meta name="description" content="{{blog.descript}}" >
+
+   
+
+</head>
+
+<!-- Header Container / End -->
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>بلاگ</h2><span>اخیر</span>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>بلاگ</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+
+	<!-- Blog Posts -->
+	<div class="blog-page">
+	<div class="row">
+
+
+		<!-- Post Content -->
+		<div class="col-lg-12 col-md-8 padding-right-30">
+
+
+			<!-- Blog Post -->
+			<div class="blog-post single-post">
+				
+				<!-- Img -->
+				<img class="post-img" src="{{blog.image.url}}" alt="">
+
+				
+				<!-- Content -->
+				<div class="post-content">
+
+					<h2>{{blog.title}}</h2>
+
+					<ul class="post-meta">
+						<li>{{blog.create_time}}</li>
+						<li>{{blog.cat}}</li>
+					
+					</ul>
+
+					<p>{{blog.descript}} </p>
+
+			
+					<p>{{blog.content|safe}}</p>
+
+
+					<!-- Share Buttons -->
+		
+
+<ul class="share-buttons margin-top-40 margin-bottom-0">
+						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> اشتراک</a></li>
+						<li><a class="whatsapp-share" href="https://wa.me/whatsappphonenumber/?text=https://www.hamtimi.ir{%url 'post' title=blog.title%}"><i class="fa fa-whatsapp"></i>اشتراک</a></li>
+						<li><a class="gplus-share" href="mailto:?subject=%s&body=https://www.hamtimi.ir{%url 'post' title=blog.title%}"><i class="fa fa-google"></i> اشتراک</a></li>
+						<li><a class="twitter-share" href="https://t.me/share/url?text=%s&url=https://www.hamtimi.ir{%url 'post' title=blog.title%}"><i class="fa fa-telegram"></i> اشتراک</a></li>
+					</ul>
+					<div class="clearfix"></div>
+
+    <p>آدرس  این مطلب</p>
+    <input type="text" readonly="" class="share-modal__link-box" value="https://www.hamtimi.ir{%url 'post' title=blog.title%}" onClick="this.select();">
+  </div>
+</div>
+
+				</div>
+			</div>
+			<!-- Blog Post / End -->
+
+
+			<!-- About Author -->
+			<div class="about-author">
+			
+				<img src="{{user.profile.avatar_url}}" alt="" />
+			
+			
+
+				<div class="about-description">
+					<h4>{{user.username}}</h4>
+					<a href="#"><span class="__cf_email__" data-cfemail="2c5843416c49544d415c4049024f4341">{{user.email}}</span></a>
+					<p>{{user.profile.bio}}.</p>
+				</div>
+			</div>
+
+
+	
+			<!-- Related Posts / End -->
+
+
+			<div class="margin-top-50"></div>
+
+			<!-- Reviews -->
+			<section class="comments">
+
+                      {%for comm in blog.comments.all%}
+				<ul>
+					<li>
+						<a href="{%url 'profile' username=comm.user.username %}"><div class="avatar"><img src="{{comm.user.profile.avatar_url}}" alt="" /></div>
+						<div class="comment-content"><div class="arrow-comment"></div>
+							<div class="comment-by">{{comm.user.username}}</a><span class="date">{{blog.create_time}}</span>
+								
+			
+							</div>
+							<p>{{comm.comment}}</p>
+											<div class="toggle-wrap">
+					<span class="trigger"><a href="#"><i class="sl sl-icon-pin"></i>پاسخ <i class="sl sl-icon-plus"></i> </a></span>
+					<div class="toggle-container">
+						<p><form action="{%url 'rep' title=comm.blog.title %}" method="post">
+							 {%csrf_token%}
+							<fieldset>
+
+						<div class="row">
+							<div class="col-md-6">
+								<label>نام:</label>
+								<input type="text" readonly="" value="{{request.user}}"/>
+							</div>
+								
+						
+						</div>
+
+						<div>
+							<label>نظر:</label>
+							<textarea name="com" id="com"></textarea>
+                          <input name="rep" id="rep" value="{{rep.rep.comment}}" >
+						</div>
+					</fieldset>
+
+					<button class="button" type="submit">ارسال نظر</button>
+					<div class="clearfix"></div>
+						</form></p>
+						</div>
+					</div>
+				</div>
+
+						<ul>
+							<li>
+								{%for rep in rep%}
+								  {%if rep.rep.cm_url%}
+								<div class="avatar"><img src="{{rep.user.profile.avatar_url}}" alt="" /></div>
+								<div class="comment-content"><div class="arrow-comment"></div>
+									<div class="comment-by">{{rep.user.username}}<span class="date">{{rep.create_time}}</span>
+										
+									</div>
+									 
+									<p>{{rep.comment}}</p>
+							
+								</div>
+							</li>
+							{%endif%}
+								{%endfor%}
+								
+
+								
+
+							</li>
+						</ul>
+
+					</li>
+
+					
+				
+				 {%endfor%}
+
+			</section>
+			<div class="clearfix"></div>
+
+
+			<!-- Add Comment -->
+			<div id="add-review" class="add-review-box">
+
+				<!-- Add Review -->
+
+				<h3 class="listing-desc-headline margin-bottom-35">افزودن نظر</h3>
+	
+			<form action="{%url 'comment' title=blog.title %}" method="post" class="add-comment" id="add-comment">
+				{%csrf_token%}
+
+					<fieldset>
+
+						<div class="row">
+							<div class="col-md-6">
+								<label>نام:</label>
+								<input type="text" readonly="" value="{{request.user}}"/>
+							</div>
+								
+						
+						</div>
+
+						<div>
+							<label>نظر:</label>
+							<textarea name="com" id="com"></textarea>
+						</div>
+
+					</fieldset>
+
+					<button class="button" type="submit">ارسال نظر</button>
+					<div class="clearfix"></div>
+				</form>
+
+			</div>
+			<!-- Add Review Box / End -->
+
+	</div>
+	<!-- Content / End -->
+
+
+
+	<!-- Sidebar / End -->
+
+
+</div>
+</div>
+
+
+
+
+		
+		<!-- Copyright -->
+		
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+
+
+{% endblock content %}

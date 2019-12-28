@@ -1,0 +1,329 @@
+{% load static %}
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>{%block title%}{%endblock title%}</title>
+	{% block css %}
+
+             
+			 <link rel="stylesheet" href="{%static 'app_event/css/style.css'%}">
+             <link rel="stylesheet" href="{%static 'app_event/css/main-color.css'%}" id="colors">
+
+
+
+			    
+	{% endblock css %}
+
+</head>
+<body >
+
+	{% block navabar %}
+				
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+		<!-- Header Container
+		================================================== -->
+		<header id="header-container">
+
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="/"><img src="{%static 'app_event/img/logo.png'%}" data-sticky-logo="{%static 'app_event/img/logo.png'%}" alt=""></a>
+				</div>
+
+				<!-- Mobile Navigation -->
+				<div class="mmenu-trigger">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1 ">
+					<ul id="responsive">
+						<li><a class="current" href="/">صفحه اصلی</a>
+					
+						</li>
+						<li><a  href="{%url 'event'%}">رویداد ها</a></li>
+							<ul>
+                      
+							
+								
+							</ul>
+						</li>
+
+						<li><a href="#">پنل کاربری</a>
+							<ul>
+								<li><a href="{%url 'dashboard'%}">داشبورد</a></li>
+								<li><a href="{%url 'my_events'%}">پیام ها</a></li>
+								
+								<li><a href="{%url 'my_events'%}">رویداد های من</a></li>
+								<li><a href="{%url 'coming_soon'%}">رزرو های من</a></li>
+								<li><a href="{%url 'new_event'%}">افزودن رویداد</a></li>
+								<li><a href="{%url 'my-profile'%}">پروفایل من</a></li>
+								
+							</ul>
+						</li>
+
+						<li><a href="{%url 'salon'%}">سالن ها</a></li>
+					<li><a href="{%url 'blog'%}">بلاگ</a></li>			
+					
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+
+			<!-- Right Side Content / End -->
+			<div class="right-side">
+				<div class="header-widget">
+					<!-- User Menu -->
+					<div class="user-menu">
+					 {%if  user.is_authenticated%}
+						   
+								 <div class="user-name"><span><img src="{{user.profile.avatar_url}}" alt=""></span>سلام،{{user.username}}</div>
+						<ul>
+							<li><a href="{%url 'dashboard'%}"><i class="sl sl-icon-settings"></i> داشبورد</a></li>
+							<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> پیام ها</a></li>
+							<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> رزرو ها</a></li>
+							<li><a href="{%url 'signout'%}"><i class="sl sl-icon-power"></i> خروج</a></li>
+						</ul>
+</div>
+					   <a href="{%url 'new_event'%}" class="button border with-icon">افزودن رویداد<i class="glyphicon glyphicon-plus"></i></a>
+					   {%else%}
+					       <a href="{%url 'loginn'%}" class="button border with-icon">ورود<i class="glyphicon glyphicon-log-in"></i></a>
+
+					
+
+					
+			
+				</div>
+			</div>
+				 {%endif%}
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+
+
+			<!-- Right Side Content / End -->
+           {%if not user.is_authenticated%}
+			<!-- Sign In Popup -->
+			<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+
+				<div class="small-dialog-header">
+					<h3>ورود</h3>
+				</div>
+
+				<!--Tabs -->
+				<div class="sign-in-form style-1">
+
+					<ul class="tabs-nav">
+						<li class=""><a href="#tab1">ورود</a></li>
+						<li><a href="#tab2">ثبت نام</a></li>
+					</ul>
+
+					<div class="tabs-container alt">
+
+						<!-- Login -->
+						<div class="tab-content" id="tab1" style="display: none;">
+							<form method="post" class="ورود">
+
+								<p class="form-row form-row-wide">
+									<label for="username">نام کاربری:
+										<i class="im im-icon-Male"></i>
+										<input type="text" class="input-text" name="username" id="username" value="" />
+									</label>
+								</p>
+
+								<p class="form-row form-row-wide">
+									<label for="password">رمز عبور:
+										<i class="im im-icon-Lock-2"></i>
+										<input class="input-text" type="password" name="password" id="password"/>
+									</label>
+									<span class="lost_password">
+										<a href="#" >فراموشی رمز عبور؟</a>
+									</span>
+								</p>
+
+								<div class="form-row">
+									<input type="submit" class="button border margin-top-5" name="login" value="ورود" />
+									<div class="checkboxes margin-top-10">
+										<input id="remember-me" type="checkbox" name="check">
+										<label for="remember-me">مرا به خاطر داشته باش</label>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+
+						<!-- Register -->
+						<div class="tab-content" id="tab2" style="display: none;">
+
+							<form method="post" class="register">
+								
+							<p class="form-row form-row-wide">
+								<label for="username2">نام کاربری:
+									<i class="im im-icon-Male"></i>
+									<input type="text" class="input-text" name="username" id="username2" value="" />
+								</label>
+							</p>
+								
+							<p class="form-row form-row-wide">
+								<label for="email2">آدرس ایمیل:
+									<i class="im im-icon-Mail"></i>
+									<input type="text" class="input-text" name="email" id="email2" value="" />
+								</label>
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password1">رمز عبور:
+									<i class="im im-icon-Lock-2"></i>
+									<input class="input-text" type="password" name="password1" id="password1"/>
+								</label>
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password2">تایید رمز عبور:
+									<i class="im im-icon-Lock-2"></i>
+									<input class="input-text" type="password" name="password2" id="password2"/>
+								</label>
+							</p>
+
+							<input type="submit" class="button border fw margin-top-10" name="register" value="ثبت نام" />
+	
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			{%endif%}
+			<!-- Sign In Popup / End -->
+	
+		</div>
+	</div>
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+
+	{% endblock navabar %}
+{% block content %}
+	
+{% endblock content %}
+{% block footer %}
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="{%static 'app_event/img/logo.png'%}" alt="">
+				<br><br>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>لینک ها</h4>
+				<ul class="footer-links">
+					{% if user.is_authenticated %}
+					<li><a href="{%url 'signout'%}">خروج</a></li>
+					<li><a href="{%url 'dashboard'%}">حساب من</a></li>
+
+				{%else%}
+				    <li><a href="{%url 'loginn'%}">ورود</a></li>             
+					<li><a href="{%url 'signup'%}">ثبت نام</a></li>
+
+
+				{%endif%} 	
+					<li><a href="{%url 'new_event'%}">افزودن رویداد</a></li>
+					<li><a href="{%url 'privacy'%}">قوانین</a></li>
+					<li><a href="{%url 'privacy'%}">حریم خصوصی</a></li>
+				</ul>
+				<ul class="footer-links">
+				
+					<li><a href="{%url 'blog'%}">بلاگ</a></li>
+					<li><a href="{%url 'about'%}">تیم ما</a></li>
+					<li><a href="{%url 'about'%}">درباره ما</a></li>
+					<li><a href="{%url 'contact'%}">تماس با ما</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>تماس با ما</h4>
+				<div class="text-widget">
+					<span>ایران، کرج</span> <br>
+					تلفن: <span>(026) 34461187</span><br>
+					ایمیل:<span> <a href="#"><span>info[at]hamtimi[dot]ir</span></a> </span><br>
+				</div>
+
+				<class="text-widget">
+					<a  href="https://ir.linkedin.com/in/mohammad-hosseinifar-409a3716a?trk=people-guest_profile-result-card_result-card_full-click"><i class="fab fa-linkedin"></i></a>
+					<a  href="instagram.com/hamtimi.ir"><i class="fab fa-invision"> </i></a>
+					<a  href="{%url 'contact'%}"><i class="fab fa-readme"> </i></a>
+				
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+</div>
+</div>
+{% endblock footer %}
+{%block Copyrights%}
+  <div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 1398 هم تیمی. تمامی حقوق محفوظ است.</div>
+			</div>
+		</div>
+{%endblock Copyrights%}
+  <div id="backtotop"><a href="#"></a></div>
+
+
+</div>
+
+{% block js %}
+	<script type="text/javascript" src="{%static 'app_event/scripts/jquery-2.2.0.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/mmenu.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/chosen.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/slick.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/rangeslider.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/magnific-popup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/waypoints.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/counterup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/jquery-ui.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/tooltips.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/custom.js'%}"></script>
+<script type="text/javascript">!function(){function t(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,localStorage.getItem("rayToken")?t.src="https://app.raychat.io/scripts/js/"+o+"?rid="+localStorage.getItem("rayToken")+"&href="+window.location.href:t.src="https://app.raychat.io/scripts/js/"+o;var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}var e=document,a=window,o="6c78c6b0-7cb3-482e-9bb2-a5f4cbca190f";"complete"==e.readyState?t():a.attachEvent?a.attachEvent("onload",t):a.addEventListener("load",t,!1)}();</script>
+{% endblock js %}
+</body>
+</html>

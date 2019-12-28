@@ -1,0 +1,7 @@
+{% extends "base2.html" %}
+{% block content %}
+	{{t}}
+	{%for t in t%}
+	  {{t.region}}
+	  {%endfor%}
+{% endblock content %}

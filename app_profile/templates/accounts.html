@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+	
+<div class="container">
+	
+	   {{pro.profile.first_name}}
+	   {{pro.profile.last_name}}
+	   {{pro.profile.tell}}
+	   {{pro.profile.user}}
+	   <img src="{{pro.profile.avatar.url}}" height="250" width="250">
+	    <ul>
+	    	<li><a href="http://127.0.0.1:8000/event/dialogs/{{pro.profile.user}}">sdsad</a></li>
+	    </ul>
+	        
+	   <img src="{{acc.profile.avatar_url.url}}">
+{% endblock content %}

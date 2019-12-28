@@ -1,0 +1,92 @@
+{% load static %}
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>لیستئو</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="{%static 'app_event/css/style.css'%}">
+<link rel="stylesheet" href="{%static 'app_event/css/main-color.css'%}" id="colors">
+
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+
+<!-- Content
+================================================== -->
+
+<!-- Coming Soon Page -->
+<div class="coming-soon-page" style="background-image: url({%static 'app_event/img/bg-01.jpg'%})">
+	<div class="container">
+		<!-- Search -->
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<a href="{%url 'home'%}"><img src="{%static 'app_event/img/logo.png'%}" alt=""></a>
+
+				<h3>بزودی این قسمت را اندازی میشود</h3>
+				
+				<!-- Countdown -->
+				<div id="countdown" class="margin-top-10 margin-bottom-35"></div>
+				<!-- Countdown / End -->
+
+				<br>
+
+			
+				
+						
+					<a href="{%url 'home'%}"><button class="button" >برگشت به صفحه اصلی</button></a>
+			
+				
+			</div>
+		</div>
+		<!-- Search Section / End -->
+	</div>
+</div>
+<!-- Coming Soon Page / End -->
+
+</div>
+<!-- Wrapper / End -->
+
+
+
+<!-- Scripts
+================================================== -->
+
+    <script type="text/javascript" src="{%static 'app_event/scripts/jquery-2.2.0.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/mmenu.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/chosen.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/slick.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/rangeslider.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/magnific-popup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/waypoints.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/counterup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/jquery-ui.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/tooltips.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/custom.js'%}"></script>
+
+<!-- Countdown Script -->
+<script type="text/javascript" src="{%static 'app_event/scripts/jquery.countdown.min.js'%}"></script>
+<script type="text/javascript">
+	$("#countdown")
+		.countdown('2019/11/12', function(event) {
+			var $this = $(this).html(event.strftime(''
+			+ '<div><span>%D</span>  <i>روز</i></div>'
+			+ '<div><span>%H</span> <i>ساعت</i></div> '
+			+ '<div><span>%M</span> <i>دقیقه</i></div> '
+			+ '<div><span>%S</span> <i>ثانیه</i></div>'
+		));
+	});
+</script>
+
+
+</body>
+
+</html>

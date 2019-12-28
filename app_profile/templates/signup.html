@@ -1,0 +1,397 @@
+
+{%load static%}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://cdn.lineicons.com/1.0.0/LineIcons.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+<style type="text/css">
+  
+  html,body{
+    color: #fff;
+}
+.lni{
+    font-size: 64px;
+}
+
+.bg{
+    background: linear-gradient(to right, #3c96ff 0%, #2dfbff 100%) !important;
+}
+
+.regform{
+    box-shadow: 0px 8px 9px 0px rgba(69, 69, 69, 0.25);
+}
+
+.sign{
+    color: #000;
+}
+
+
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10006;";
+}
+</style>
+
+<html>
+<head>
+  <title>ثبت نام</title>
+</head>
+<body class="bg">
+
+<br><br>
+<div class="col-md-12">
+<div class="container-fluid bg">
+  <div class="container">
+      <div class="row">
+    <div class="col-md-8 ">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 col-lg-2">
+                <i class="lni lni-enter" aria-hidden="true"></i>
+            </div>
+            
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <h1 class="heading">Register</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+        </div>
+        
+         <div class="row">
+            <div class="col-sm-3 col-md-2 col-lg-2">
+                <i class="lni lni-user" aria-hidden="true"></i>
+            </div>
+            
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <h1 class="heading">Make Your Profile</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-sm-3 col-md-2 col-lg-2">
+                <i class="lni lni-cloud-upload" aria-hidden="true"></i>
+            </div>
+            
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <h1 class="heading">Upload Resume</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3 col-md-2 col-lg-2">
+                <i class="lni lni-search" aria-hidden="true"></i>
+            </div>
+            
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <h1 class="heading">Search Jobs</h1>
+                <p>  
+
+                       
+  
+
+</p>
+
+
+            </div>
+        </div>
+    </div>
+   <div class="col-md-4">
+
+    <br>
+
+    <br>
+            <div class="card regform wow bounce animated" data-wow-delay="0.05s">
+                <div class="card-body regform">
+                   <div class="myform form ">
+                        <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                              <h1 class="sign">ثبت نام</h1>
+                           </div>
+                        </div>
+                        <form action="{%url 'signup'%}" method="post" >
+                           {% csrf_token %}
+                        
+                           <div class="form-group">
+                              <label for="">First Name</label>
+                              <input type="text"  name="username" class="form-control" id="firstname" aria-describedby="emailHelp" title="لطفا نام کاربری را وارد کنید" placeholder="نام کاربری خود را وارد کنید" required>
+                           </div>
+
+                             <div class="form-group">
+                              <label for="">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp"  pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="پسورد باید حداقل ۸ کاراکتر باشد و ترکیبی از اعداد و حروف الفبا باشد"  placeholder="رمز خود را وارد کنید" required>
+                           </div>
+                         
+                         
+                           <div class="form-group">
+                              <label for="">Password</label>
+                              <input type="password" name="password2" id="confirm_password"  class="form-control" aria-describedby="emailHelp"   pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="پسورد باید حداقل ۸ کاراکتر باشد و ترکیبی از اعداد و حروف الفبا باشد" r placeholder="تایید رمز" required>
+                           </div>
+                           <div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+<br>
+
+                        {%if messages%}
+                  <div class="toast">
+                    {%for me in messages%}
+  <div class="toast-header">
+    
+  </div>
+  <div class="toast-body">
+    
+         <font color="red">
+          {{me}}</font>
+      
+   
+  </div>
+</div>
+{%endfor%}
+{%endif%}
+<br>
+ <script src="https://www.google.com/recaptcha/api.js?render=6LfdIsYUAAAAAGvvHcDn8A1jvumHefiaAyHpIomY"></script>
+        <script>
+          // 3
+          grecaptcha.ready(function() {
+              // 4
+              $('#contactform').submit(function(e){
+                  var form = this;
+                  // 5
+                  e.preventDefault()
+                  grecaptcha.execute('6LfdIsYUAAAAAGvvHcDn8A1jvumHefiaAyHpIomY', {action: 'contactform'}).then(function(token) {
+                      // 6
+                      $('#recaptcha').val(token)
+                      // 7
+                      form.submit()
+                  });
+              })
+          });
+         </script>
+                           <div class="col-md-12 text-center mb-3">
+                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">ثبت نام</button>
+                              <br>s<center><p><font color="red">ورود با گوگل</font></p>
+                  <a href="{% url 'social:begin' 'google-oauth2' %}" class="login100-social-item">
+            <img src="{%static 'app_profile/images/icons/icon-google.png'%}" alt="GOOGLE">
+          </a></center><br>
+            
+                           </div>
+                           <div class="col-md-12 ">
+                              <div class="form-group">
+                                 <p class="text-center"><a href="{%url 'login'%}" id="signin">اگر از قبل حساب کاربری دارد </a>  
+
+                              
+                                 </p>
+                              </div>
+                            
+
+
+                           </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+  </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+  
+
+  $("#signup").click(function() {
+$("#first").fadeOut("fast", function() {
+$("#second").fadeIn("fast");
+});
+});
+
+$("#signin").click(function() {
+$("#second").fadeOut("fast", function() {
+$("#first").fadeIn("fast");
+});
+});
+
+
+  
+   /*      $(function() {
+           $("form[name='login']").validate({
+             rules: {
+               
+               email: {
+                 required: true,
+                 email: true
+               },
+               password: {
+                 required: true,
+                 
+               }
+             },
+              messages: {
+               email: "Please enter a valid email address",
+              
+               password: {
+                 required: "Please enter password",
+                
+               }
+               
+             },
+             submitHandler: function(form) {
+               form.submit();
+             }
+           });
+         });
+         
+
+*/
+$(function() {
+  
+  $("form[name='registration']").validate({
+    rules: {
+      firstname: "required",
+      lastname: "required",
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    
+    messages: {
+      firstname: "Please enter your firstname",
+      lastname: "Please enter your lastname",
+      password: {
+        required: "Please provide a password",
+        minlength: "Your password must be at least 5 characters long"
+      },
+      email: "Please enter a valid email address"
+    },
+  
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
+<script type="text/javascript">
+  
+
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+
+</script>

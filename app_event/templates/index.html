@@ -1,0 +1,647 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>هم تیمی</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta name="description" content="رزرو سالن های ورزشی و لیست کامل از تمامی اماکن ورزشی شهر کرج,بازیکن یاب,ساخت رویداد های ورزشی  کاملا رایگان" >
+
+<meta name="keywords" content="سالن فوتبال,سالن فوتسال,رزرو,اماکن ورزشی,رویداد,فوتبال,تنیس,والیبال,بسکتبال,پینت بال,گیم">
+<!-- CSS
+================================================== -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+             <link rel="stylesheet" href="{%static 'app_event/css/bootstrap-grid.css'%}">
+	         <link rel="stylesheet" href="{%static 'app_event/css/style.css'%}">
+             <link rel="stylesheet" href="{%static 'app_event/css/main-color.css'%}" id="colors">
+             <link rel="stylesheet" href="{%static 'app_event/css/icons.css'%}">
+
+
+
+
+</head>
+
+<body class="transparent-header">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+<header id="header-container">
+
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="/"><img src="{%static 'app_event/img/logo.png'%}" data-sticky-logo="{%static 'app_event/img/logo.png'%}" alt=""></a>
+				</div>
+
+				<!-- Mobile Navigation -->
+				<div class="mmenu-trigger">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1 ">
+					<ul id="responsive">
+						<li><a class="current" href="/">صفحه اصلی</a>
+					
+						</li>
+						<li><a  href="{%url 'event'%}">رویداد ها</a></li>
+							<ul>
+                      
+							
+								
+							</ul>
+						</li>
+
+						<li><a href="#">پنل کاربری</a>
+							<ul>
+								<li><a href="{%url 'dashboard'%}">داشبورد</a></li>
+								<li><a href="{%url 'my_events'%}">پیام ها</a></li>
+								
+								<li><a href="{%url 'my_events'%}">رویداد های من</a></li>
+								<li><a href="{%url 'coming_soon'%}">رزرو های من</a></li>
+								<li><a href="{%url 'new_event'%}">افزودن رویداد</a></li>
+								<li><a href="{%url 'my-profile'%}">پروفایل من</a></li>
+								<li><a href="{%url 'coming_soon' %}">صورتحساب</a></li>
+							</ul>
+						</li>
+
+						<li><a href="{%url 'salon'%}">سالن ها</a></li>
+							
+					<li><a href="{%url 'blog'%}">بلاگ</a></li>			
+					
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+
+			<!-- Right Side Content / End -->
+			<div class="right-side">
+				<div class="header-widget">
+					<!-- User Menu -->
+					<div class="user-menu">
+					 {%if  user.is_authenticated%}
+						   
+								 <div class="user-name"><span><img src="{{user.profile.avatar_url}}" alt=""></span>سلام،{{user.username}}</div>
+						<ul>
+							<li><a href="{%url 'dashboard'%}"><i class="sl sl-icon-settings"></i> داشبورد</a></li>
+							<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> پیام ها</a></li>
+							<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> رزرو ها</a></li>
+							<li><a href="{%url 'signout'%}"><i class="sl sl-icon-power"></i> خروج</a></li>
+						</ul>
+</div>
+					   <a href="{%url 'new_event'%}" class="button border with-icon">ایجاد رویداد<i class="glyphicon glyphicon-plus"></i></a>
+					   {%else%}
+					       <a href="{%url 'loginn'%}" class="button border with-icon">ورود<i class="glyphicon glyphicon-log-in"></i></a>
+
+					
+
+					
+			
+				</div>
+			</div>
+				 {%endif%}
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+
+
+			<!-- Right Side Content / End -->
+           {%if not user.is_authenticated%}
+			<!-- Sign In Popup -->
+			<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+
+				<div class="small-dialog-header">
+					<h3>ورود</h3>
+				</div>
+
+				<!--Tabs -->
+				<div class="sign-in-form style-1">
+
+					<ul class="tabs-nav">
+						<li class=""><a href="#tab1">ورود</a></li>
+						<li><a href="#tab2">ثبت نام</a></li>
+					</ul>
+
+					<div class="tabs-container alt">
+
+						<!-- Login -->
+						<div class="tab-content" id="tab1" style="display: none;">
+							<form method="post" class="ورود">
+
+								<p class="form-row form-row-wide">
+									<label for="username">نام کاربری:
+										<i class="im im-icon-Male"></i>
+										<input type="text" class="input-text" name="username" id="username" value="" />
+									</label>
+								</p>
+
+								<p class="form-row form-row-wide">
+									<label for="password">رمز عبور:
+										<i class="im im-icon-Lock-2"></i>
+										<input class="input-text" type="password" name="password" id="password"/>
+									</label>
+									<span class="lost_password">
+										<a href="#" >فراموشی رمز عبور؟</a>
+									</span>
+								</p>
+
+								<div class="form-row">
+									<input type="submit" class="button border margin-top-5" name="login" value="ورود" />
+									<div class="checkboxes margin-top-10">
+										<input id="remember-me" type="checkbox" name="check">
+										<label for="remember-me">مرا به خاطر داشته باش</label>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+
+						<!-- Register -->
+						<div class="tab-content" id="tab2" style="display: none;">
+
+							<form method="post" class="register">
+								
+							<p class="form-row form-row-wide">
+								<label for="username2">نام کاربری:
+									<i class="im im-icon-Male"></i>
+									<input type="text" class="input-text" name="username" id="username2" value="" />
+								</label>
+							</p>
+								
+							<p class="form-row form-row-wide">
+								<label for="email2">آدرس ایمیل:
+									<i class="im im-icon-Mail"></i>
+									<input type="text" class="input-text" name="email" id="email2" value="" />
+								</label>
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password1">رمز عبور:
+									<i class="im im-icon-Lock-2"></i>
+									<input class="input-text" type="password" name="password1" id="password1"/>
+								</label>
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password2">تایید رمز عبور:
+									<i class="im im-icon-Lock-2"></i>
+									<input class="input-text" type="password" name="password2" id="password2"/>
+								</label>
+							</p>
+
+							<input type="submit" class="button border fw margin-top-10" name="register" value="ثبت نام" />
+	
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			{%endif%}
+			<!-- Sign In Popup / End -->
+	
+		</div>
+	</div>
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Banner
+================================================== -->
+<div class="main-search-container centered">
+	<div class="bg">	
+
+	<div class="main-search-inner">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>
+						پیدا کردن نزدیک ترین 
+						<!-- Typed words can be configured in script settings at the bottom of this HTML file -->
+						<span class="typed-words"></span>
+					</h2>
+					<h4>توپ از ما سالن از ما بازیکنش هم با ما تو فقط بیا</h4>
+                        <form action="{%url 'search'%}" method="GET">
+					<div class="main-search-input">
+
+						<div class="main-search-input-item">
+							<input type="text" placeholder="دنبال چی میگردی؟" value="{{request.GET.q}}" name="q" />
+						</div>
+
+						
+							<div class="main-search-input-item">
+								<select data-placeholder="تمام دسته ها" class="chosen-select" name="t">
+											   	
+						   <option>فوتبال</option>
+						   <option>پینت بال</option>
+						   <option>بسکتبال</option>
+					       <option>والیبال</option>
+					       <option>شطرنج</option>
+					       <option>بازی های کامپیوتری</option>
+					       <option>تنیس</option>
+					       <option>دیگر</option>
+							</select>
+
+							</div>
+							
+					
+
+						<div class="main-search-input-item">
+							<select data-placeholder="تمام دسته ها" class="chosen-select" name="n">
+						<option>تهران</option>	
+						   <option>کرج</option>
+						   <option>تبریز</option>
+						   <option>مشهد</option>
+					       <option>شیراز</option>
+					       <option>اصفهان</option>
+							</select>
+						</div>
+
+						<center><button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">جستجو</button>
+                               </center>
+					</div>
+				</div>
+			</form>
+			</div>
+				<br><br><a href="{%url 'salon'%}" class="button "><i class="im im-icon-Search-onCloud"></i>بانک اطلاعاتی کامل از تمام اماکن ورزشی استان البرز</a>
+			<!-- Features Categories -->
+			
+			<!-- Featured Categories - End -->
+
+		</div>
+
+	</div>
+</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-12">
+			<h3 class="headline centered margin-top-75">
+
+				<strong class="headline-with-separator">دسته ها</strong>
+			</h3>
+		</div>
+		<div class="col-md-12">
+      <form action="{%url 'cat'%}" method="GET">
+      	{%csrf_token%}
+      	 	<div class="wrapper">
+    <button class="example-1" name='type' value="فوتبال"><i class="im im-icon-Football-2"></i><h4>فوتبال</h4></button>
+    <button class="example-1" name='type' value="تنیس"><i class="im im-icon-Tennis"></i><h4>تنیس</h4></button>
+    <button class="example-1" name='type' value="والیبال"><i class="im  im-icon-Volleyball "></i><h4>والیبال</h4></button>
+    <button class="example-1" name='type' value="پینت بال"><i class="im im-icon-Flag-2"></i><h4>پینت بال</h4></button>
+    <button class="example-1" name='type' value="بسکتبال"><i class="im   im-icon-Basket-Ball "></i><h4>بسکتبال</h4></button>
+   
+         
+ 
+    <div style="clear: both;"></div>
+		</div>
+</form>
+</div>
+    </div>
+
+		
+	
+
+</div>
+<!-- Category Boxes / End -->
+
+
+
+
+
+<!-- Info Section -->
+<section class="fullwidth padding-top-75 padding-bottom-70" data-background-color="#f9f9f9">
+
+		   
+			
+		
+		<div class="container">
+
+     
+            <h4>درباره هم تیمی</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-timeline5">
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year"><i class="im im-icon-Network"></i></span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">رویداد ورزشی</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year"><i class="im  im-icon-Movie-Ticket "></i></span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">رزرو سالن</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year"><i class="im im-icon-Find-User"></i></span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">بازیکن یاب</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year"><i class="im  im-icon-Football-2 "></i></span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">بانک اطلاعاتی اماکن ورزشی</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+	
+
+	
+		<!-- Stage -->
+
+
+	
+
+<!-- Info Section / End -->
+
+
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					<strong class="headline-with-separator">اخرین اماکن ورزشی اضافه شده به سامانه</strong>
+					<span>مجموعه های ورزشی فعال همراه با اطلاعات کامل</span>
+				</h3>
+			</div>
+
+			<div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+				{%for salon in salon%}
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<a href="{%url 'salon_detail' salon_name=salon.salon_name %}" class="listing-item-container">
+						<div class="listing-item">
+							<img src="{{salon.salon_image}}" alt="">
+
+							<div class="listing-badge now-open">{{salon.salon_type}}</div>
+							
+							<div class="listing-item-content">
+								<span class="tag">{{salon.salon_type}}</span>
+								<h3>{{salon.salon_name}},{{salon.salon_roof}}<i class="verified-icon"></i></h3>
+								<span>{{salon.city}}،{{salon.address}}</span>
+							</div>
+							<span class="like-icon"></span>
+						</div>
+						<div class="star-rating" data-rating="4">
+							{%if salon.cm%}
+							<div class="rating-counter">نظر {{salon.cm.count}} </div>
+							{%endif%}
+						</div>
+					</a>
+				</div>
+				{%endfor%}
+				<!-- Listing Item / End -->
+
+				<!-- Listing Item -->
+				
+				<!-- Listing Item / End -->
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
+
+</section>
+
+<!-- Recent Blog Posts -->
+<section class="fullwidth margin-top-0 padding-top-75 padding-bottom-75" data-background-color="#fff">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-55">
+					<strong class="headline-with-separator">از وبلاگ</strong>
+				</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- Blog Post Item -->
+			{%for blog in blog%}
+			<div class="col-md-4">
+				<a href="{%url 'post' title=blog.title %}" class="blog-compact-item-container">
+					<div class="blog-compact-item">
+						<img src="{{blog.image.url}}" alt="">
+						<span class="blog-item-tag">نکات</span>
+						<div class="blog-compact-item-content">
+							<ul class="blog-post-tags">
+								<li>{{blog.create_time}}</li>
+							</ul>
+							<h3>{{blog.title}}</h3>
+							<p>{{blog.descript}}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+			{%endfor%}
+			<!-- Blog post Item / End -->
+
+
+
+			<!-- Blog post Item / End -->
+
+			<div class="col-md-12 centered-content">
+				<a href="{%url 'blog'%}" class="button border margin-top-10">مشاهده بلاگ</a>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- Recent Blog Posts / End -->
+
+
+<!-- Footer
+================================================== -->
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="{%static 'app_event/img/logo.png'%}" alt="">
+				<br><br>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>لینک ها</h4>
+				<ul class="footer-links">
+					{% if user.is_authenticated %}
+					<li><a href="{%url 'signout'%}">خروج</a></li>
+					<li><a href="{%url 'dashboard'%}">حساب من</a></li>
+
+				{%else%}
+				    <li><a href="{%url 'loginn'%}">ورود</a></li>             
+					<li><a href="{%url 'signup'%}">ثبت نام</a></li>
+
+
+				{%endif%} 	
+					<li><a href="{%url 'new_event'%}">افزودن رویداد</a></li>
+					<li><a href="{%url 'privacy'%}">قوانین</a></li>
+					<li><a href="{%url 'privacy'%}">حریم خصوصی</a></li>
+				</ul>
+				<ul class="footer-links">
+				
+					<li><a href="{%url 'blog'%}">بلاگ</a></li>
+					<li><a href="{%url 'about'%}">تیم ما</a></li>
+					<li><a href="{%url 'about'%}">درباره ما</a></li>
+					<li><a href="{%url 'contact'%}">تماس با ما</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>تماس با ما</h4>
+				<div class="text-widget">
+					<span>ایران، کرج</span> <br>
+					تلفن: <span>026-34561187</span><br>
+					ایمیل:<span> <a href="#"><span>info[at]hamtimi[dot]ir</span></a> </span><br>
+				</div>
+
+				<class="text-widget">
+					<a  href="https://ir.linkedin.com/in/mohammad-hosseinifar-409a3716a?trk=people-guest_profile-result-card_result-card_full-click"><i class="fa fa-linkedin-square"></i></a>
+					<a  href="https://www.instagram.com/hamtimi.ir"><i class="fa fa-instagram"> </i></a>
+					<a  href="{%url 'contact'%}"><i class="fa  fa-book"> </i></a>
+				
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 1398 هم تیمی. تمامی حقوق محفوظ.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+
+<!-- Wrapper / End -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{%static 'app_event/scripts/jquery-2.2.0.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/mmenu.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/chosen.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/slick.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/rangeslider.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/magnific-popup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/waypoints.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/counterup.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/jquery-ui.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/tooltips.min.js'%}"></script>
+	<script type="text/javascript" src="{%static 'app_event/scripts/custom.js'%}"></script>
+
+
+<!-- Google Autocomplete -->
+<script>
+  function initAutocomplete() {
+    var input = document.getElementById('autocomplete-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      }
+    });
+
+	if ($('.main-search-input-item')[0]) {
+	    setTimeout(function(){ 
+	        $(".pac-container").prependTo("#autocomplete-container");
+	    }, 300);
+	}
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g&amp;libraries=places&amp;callback=initAutocomplete"></script>
+
+
+<!-- Typed Script -->
+<script type="text/javascript" src="{%static 'app_event/scripts/typed.js'%}"></script>
+<script>
+var typed = new Typed('.typed-words', {
+strings: ["بازیکن ها","رویداد های ورزشی"," اماکن ورزشی"],
+	typeSpeed: 80,
+	backSpeed: 80,
+	backDelay: 4000,
+	startDelay: 1000,
+	loop: true,
+	showCursor: true
+});
+</script>
+
+
+
+
+<script type="text/javascript">!function(){function t(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,localStorage.getItem("rayToken")?t.src="https://app.raychat.io/scripts/js/"+o+"?rid="+localStorage.getItem("rayToken")+"&href="+window.location.href:t.src="https://app.raychat.io/scripts/js/"+o;var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}var e=document,a=window,o="6c78c6b0-7cb3-482e-9bb2-a5f4cbca190f";"complete"==e.readyState?t():a.attachEvent?a.attachEvent("onload",t):a.addEventListener("load",t,!1)}();</script>
+</body>
+
+</html>

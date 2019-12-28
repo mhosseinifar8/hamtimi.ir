@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+      
+
+   <div class="dashboard-content">
+
+      <!-- Titlebar -->
+      <div id="titlebar">
+         <div class="row">
+            <div class="col-md-12">
+               <h2>رویداد های من</h2>
+               <!-- Breadcrumbs -->
+               <nav id="breadcrumbs">
+                  <ul>
+                     <li><a href="/">صفحه اصلی</a></li>
+                     <li><a href="#">داشبورد</a></li>
+                     <li>رویداد های من</li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+
+      <div class="row">
+         
+         <!-- Listings -->
+         <div class="col-lg-12 col-md-12">
+            <div class="dashboard-list-box margin-top-0">
+               <h4>تایید نشده ها</h4>
+               <ul>
+                        {%if request.user == user_request.creator%}
+                            {%for user in user_request.confrim.all%}
+                                {%if not user.approved%}
+
+                            
+                                  
+
+                              
+                                 <li>
+                                     {%if user.user.profile.avatar%}
+                                       <div class="list-box-listing">
+                                          <div class="list-box-listing-img"><a href="{%url 'profile' username=user.user.username %}"><img src="{{user.user.profile.avatar.url}}" alt=""></a></div>
+                                        {% elif  not user.user.profile.avatar%}
+                                          <div class="list-box-listing">
+                                             <div class="list-box-listing-img"><a href="{%url 'profile' username=user.user.username %}"><img src="{%static 'app_event/img/avatar.png'%}" alt=""></a></div>
+                                        {%endif%}        
+      
+                                       <div class="list-box-listing-content">
+                                          <div class="inner">
+                                             <h3><a href="{%url 'profile' username=user.user.username %}">{{user.user}}</a></h3>
+                                             <span>{{user.text}}،{{my_event.City}}،</span>
+                                             <div class="star-rating" data-rating="3.5">
+                                                <div class="rating-counter">(12 نظر)</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="buttons-to-right">
+                                       <a href="{%url 'approve' pk=user.pk %}" class="button gray"><i class="sl sl-icon-note"></i> تایید عضویت</a>
+                                       
+                           
+                           </div>
+                           
+                             
+                                {%endif%}
+                                 
+                         
+                               
+                             
+                  </li>
+                          
+                            {%endfor%}  
+
+                            {%elif request.user != my_event.creator%}
+                                 <h2>ابتدا وارد شوید</h2>
+                               {%endif%} 
+                    <h4>تایید شده ها</h4>
+                                  {%if request.user == user_request.creator%}
+                            {%for user in user_request.confrim.all%}
+                                {%if  user.approved%}
+
+                            
+                                  
+
+                              
+                                 <li>
+                                     {%if user.user.profile.avatar%}
+                                       <div class="list-box-listing">
+                                          <div class="list-box-listing-img"><a href="{%url 'profile' username=user.user.username %}"><img src="{{user.user.profile.avatar.url}}" alt=""></a></div>
+                                        {% elif  not user.user.profile.avatar%}
+                                          <div class="list-box-listing">
+                                             <div class="list-box-listing-img"><a href="{%url 'profile' username=user.user.username %}"><img src="{%static 'app_event/img/avatar.png'%}" alt=""></a></div>
+                                        {%endif%}        
+      
+                                       <div class="list-box-listing-content">
+                                          <div class="inner">
+                                             <h3><a href="{%url 'profile' username=user.user.username %}">{{user.user}}</a></h3>
+                                             <span>{{user.text}}،{{my_event.City}}،</span>
+                                             <div class="star-rating" data-rating="3.5">
+                                                <div class="rating-counter">(12 نظر)</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="buttons-to-right">
+                                       <a href="{%url 'delete_approve' pk=user.pk %}" class="button gray"><i class="sl sl-icon-note"></i> حذف</a>
+                                       
+                           
+                           </div>
+                           
+                             
+                                {%endif%}
+                                 
+                         
+                               
+                             
+                  </li>
+                          
+                            {%endfor%}  
+
+                            {%elif request.user != my_event.creator%}
+                                 <h2>ابتدا وارد شوید</h2>
+                               {%endif%}    
+               </ul>
+            </div>
+         </div>
+
+
+
+      </div>
+   </div>
+   <!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+
+{% endblock content %}  

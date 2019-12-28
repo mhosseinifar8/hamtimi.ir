@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+		
+
+	<div class="dashboard-content">
+
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>رویداد های من</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="/">صفحه اصلی</a></li>
+							<li><a href="#">داشبورد</a></li>
+							<li>رویداد های من</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			
+			<!-- Listings -->
+			<div class="col-lg-12 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+					<h4>رویداد های منقضی شده </h4>
+					<ul>
+                            {%for my_event in event%}
+                              {%if my_event.creator == request.user  %}
+                                {%if  my_event.date.month < my_event.NOW_month  %}
+                              
+						<li>
+							<div class="list-box-listing">
+								<div class="list-box-listing-img"><a href="{{my_event.get_absolout_url}}"><img src="{{my_event.img_type}}" alt=""></a></div>
+								<div class="list-box-listing-content">
+									<div class="inner">
+										<h3><a href="{{my_event.event_url}}">{{my_event.event_name}}</a></h3>
+										<span>{{my_event.state}}،{{my_event.City}}،</span>
+										<div class="star-rating" data-rating="3.5">
+											<div class="rating-counter">(12 نظر)</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="buttons-to-right">
+								
+								<a href="{%url 'remove_event' pk=my_event.pk %}" class="button gray"><i class="sl sl-icon-close"></i> حذف</a>
+				
+							</div>
+
+                               {%elif my_event.creator != request.user %}
+                                  <h2>وارد شوید</h2> 
+                                {%endif%}  
+                                
+                               {%endif%} 
+                          
+                                 
+                                
+                            {%endfor%}  
+						
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+	<!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+
+{% endblock content %}	

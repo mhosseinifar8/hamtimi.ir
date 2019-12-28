@@ -1,0 +1,128 @@
+{% extends "base2.html" %}
+{% block content %}
+<head>
+	
+
+   
+
+</head>	
+
+<!-- Header Container / End -->
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>از بلاگ</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Search -->
+		<div class="col-md-12">
+			<div class="main-search-input gray-style margin-top-0 margin-bottom-10">
+
+				<div class="main-search-input-item">
+					<form action="{%url 'search_blog'%}" method="GET">
+					<input type="text" name='s' placeholder="دنبال چی میگردی؟" value="{{request.GET.s}}"/>
+				</div>
+		
+
+				
+
+				<button class="button"  type='submit' name='submit'>جستجو</button>
+			</form>
+			</div>
+		</div>
+		<!-- Search Section / End -->
+
+
+		
+			<!-- Sorting - Filtering Section / End -->
+
+
+		
+				
+				{%if result %}
+				
+				
+                   {%for result in result %}
+				
+		
+				<!-- Listing Item -->
+				<div class="col-lg-4 col-md-6">
+					<a href="{%url 'post' title=result.title%}" class="listing-item-container compact">
+						<div class="listing-item">
+							<img src="{{result.image.url}}" alt="">
+
+							<div class="listing-badge now-open">{{result.title}}</div>
+
+							<div class="listing-item-content">
+								<div class="numerical-rating">{{result.time.year}}/{{result.time.month}}</div>
+								<h3>{{result.descript}}<i class="verified-icon"></i></h3>
+								
+							</div>
+							<span class="like-icon"></span>
+						</div>
+					</a>
+				</div>
+				<!-- Listing Item / End -->
+{%endfor%}
+{%else%}
+    موردی یافت نشد
+    {%endif%}
+
+
+
+				<!-- Listing Item / End -->
+
+			</div>
+
+			<!-- Pagination -->
+			<div class="clearfix"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Pagination -->
+					<div class="pagination-container margin-top-20 margin-bottom-40">
+						<nav class="pagination">
+							<ul>
+								<li><a href="#" class="current-page">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- Pagination / End -->
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+{% endblock content %}

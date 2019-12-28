@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	{%for mess in mesage%}
+	  {%if mess.sender == requset.user %}
+	<ul>
+      <li>{{mess.message}}{{mess.sender}}</li></ul>
+	{%else%}
+	  {%endif%}
+	{%endfor%}
+
+
+	{%for m in me%}
+	   {{m.message}}
+	   {%endfor%}
+
+
+	   {%for u in you %}
+	      {{u.message}}
+
+	      {%endfor%}
+
+</body>
+</html>	
+

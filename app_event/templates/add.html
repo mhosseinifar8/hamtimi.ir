@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block content%}
+	 <form method="POST" class="Add_comment">
+	 	  {%csrf_token%}
+	 	 {{form.as_p}}
+	 	 <button type="submit">save</button>
+	 	
+	 </form>
+{% endblock content%}
